@@ -30,11 +30,11 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/Users/Ángel/Desktop/TrabajoInfo/SDL2-2.0.22/SDL2_32Bits/include/SDL2" />
+			<Add directory="C:/Users/Ángel/Documents/GitHub/twE100_2122-proyecto-mumjatan/SDL2-2.0.22/SDL2_32Bits/include/SDL2" />
 		</Compiler>
 		<Linker>
 			<Add option="-lmingw32 -lSDL2main -lSDL2" />
-			<Add directory="C:/Users/Ángel/Desktop/TrabajoInfo/SDL2-2.0.22/SDL2_32Bits/lib" />
+			<Add directory="C:/Users/Ángel/Documents/GitHub/twE100_2122-proyecto-mumjatan/SDL2-2.0.22/SDL2_32Bits/lib" />
 		</Linker>
 		<Unit filename="Mainc.c">
 			<Option compilerVar="CC" />
