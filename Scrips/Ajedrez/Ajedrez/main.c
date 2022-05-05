@@ -4,8 +4,8 @@
 int main()
 {
     int num;
-    printf("Bienvenido\n");
-    printf("1:Nueva partida\n2:cargar partida\n3:ver puntuacion\n4:salir\n");
+    printf("Bienvenido, indique que le apetece hacer\n");
+    printf("1:Nueva partida\n2:Cargar partida\n3:Ver puntuaci%cn\n4:Salir\n",162);
     while (num!=1||num!=2||num!=3||num!=4)
     {
          scanf("%d",&num);
@@ -19,15 +19,15 @@ int main()
         printf("Cargar partida\n");//cargar partida existente
     break;
     case 3:
-        printf("ver puntuacion\n");//visualizar mejores puntuaciones
+        printf("Ver puntuaci%cn\n",162);//visualizar mejores puntuaciones
     break;
     case 4:
         printf("Salir\n");//realizar la funcion de salir
+        return 0;
     break;
     default:
         printf("Introduzca uno de los numeros marcados\n");//el usuario no introdujo un numero entre el 1-4
         break;
     }
     }
-    return 0;
 }
