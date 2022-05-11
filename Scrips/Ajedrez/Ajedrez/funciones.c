@@ -1,10 +1,24 @@
 #include "funciones.h"
 void tableroShow(int *tablero[8][8])
 {
+    int fila,columna;
+
+       for(fila=0;fila<8;fila++)
+    {
+        for(columna=0;columna<8;columna++)
+        {
+            printf("%c ",tablero[fila][columna]);
+
+        }
+
+        printf(" \n");
+
+    }
+
+}
 
 void tableroStart(int *tablero[8][8])
 {
-
     int fila,columna;
 
     tablero[0][0]='T';
@@ -42,8 +56,6 @@ void tableroStart(int *tablero[8][8])
 
 void reconocerPieza(int pieza,int turno,int *num,int *piezaI)
 {
-
-
 
     if(turno == 0)
     {
@@ -131,18 +143,5 @@ void reconocerPieza(int pieza,int turno,int *num,int *piezaI)
     }
 
 }
-    int fila,columna;
 
-       for(fila=0;fila<8;fila++)
-    {
-        for(columna=0;columna<8;columna++)
-        {
-            printf("%c ",tablero[fila][columna]);
 
-        }
-
-        printf(" \n");
-
-    }
-
-}
