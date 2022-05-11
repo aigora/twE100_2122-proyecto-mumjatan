@@ -267,4 +267,14 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
    }
 }
 
+void posicion(int *fila,int *columna,int *tablero[8][8])
+{
+    int fila1,columna1;
+
+    scanf("%d %d",&fila1,&columna1);
+    *fila = fila1;
+    *columna = columna1;
+
+}
+
 
