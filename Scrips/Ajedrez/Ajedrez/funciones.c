@@ -162,6 +162,7 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
 {
    if(*turno == 0)
    {
+
        if(piezaI == 1)//movimiento del peon
        {
 
