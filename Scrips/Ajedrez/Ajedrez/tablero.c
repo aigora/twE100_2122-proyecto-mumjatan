@@ -2,6 +2,16 @@
 #include "funciones.h"
 int main()
 {
+    printf("Bienvenido!!\n");
+    printf("1:Nueva partida\n2:Cargar partida\n3:Normas\n4:Salir\n");
+
+
+
+
+
+
+
+
     int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
     int tablero[8][8];
     int fila,columna;

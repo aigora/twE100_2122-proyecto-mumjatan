@@ -276,5 +276,3 @@ void posicion(int *fila,int *columna,int *tablero[8][8])
     *columna = columna1;
 
 }
-
-
