@@ -2,12 +2,14 @@
 #include "funciones.h"
 
 void Nuevapartida();
+void menuNormas();
+void menuMovimiento();
+void menuNormasBasicas();
 int main()
 {
     printf("Bienvenido!!\n");
 
     int menuNum,numAux=0;
-
 
 do
 {
@@ -17,9 +19,6 @@ do
     {
 
         case 1://Nueva partida
-
-
-
         system("cls");
         Nuevapartida();
          break;
@@ -29,7 +28,8 @@ do
         break;
 
         case 3://Normas
-        printf("C\n");
+        system("cls");
+        menuNormas();
         break;
 
         case 4://Salir
@@ -41,26 +41,12 @@ do
     }
 }while(numAux!=1);
 
-
-
 return 0;
-
-
-
-
-
-
-
-
-
-
-
-
 }
 void Nuevapartida()
 {
 
-int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
+    int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
     int tablero[8][8];
     int fila,columna;
     tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
@@ -131,4 +117,71 @@ int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusc
 
 
 }
+void menuNormas()
+{
+    int numA,numAux = 0;
+
+    while(numAux != 1)
+    {
+        printf("1:Movimiento\n2:Normas Basicas\n3:Volver Menu Principal\n");
+        scanf("%d",&numA);
+
+    switch(numA)
+    {
+        case 1:
+
+            menuMovimiento();
+        break;
+        case 2:
+            menuNormasBasicas();
+        break;
+        case 3:
+            system("cls");
+            numAux = 1;
+        break;
+        default:
+            printf("Error numero");
+
+    }
+
+    }
+
+
+
+}
+void menuMovimiento()
+{
+
+ int num=0;
+while(num != 1)
+{
+    system("cls");
+
+    printf("1:Volver\n");
+    printf("Normas de movimiento:\n");
+    scanf("%d",&num);
+}
+system("cls");
+
+}
+void menuNormasBasicas()
+{
+
+ int num=0;
+while(num != 1)
+{
+    system("cls");
+
+    printf("1:Volver\n");
+    printf("Normas basicas sobre el juego:\n");
+    scanf("%d",&num);
+}
+system("cls");
+
+}
+
+
+
+
+
 

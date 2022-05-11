@@ -3,10 +3,23 @@ void tableroShow(int *tablero[8][8])
 {
     int fila,columna;
 
+    printf("  ");
+    for(fila=0;fila<8;fila++)
+    {
+
+        printf("%d ",(fila+1));
+
+    }
+    printf("\n");
        for(fila=0;fila<8;fila++)
     {
         for(columna=0;columna<8;columna++)
         {
+            if(columna == 0)
+            {
+
+                printf("%d ",(fila+1));
+            }
             printf("%c ",tablero[fila][columna]);
 
         }
