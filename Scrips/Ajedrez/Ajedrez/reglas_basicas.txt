@@ -1,0 +1,26 @@
+
+*Reglas básicas*
+
+1. El Ajedrez se juega entre dos jugadores y mueven ambos por turnos.
+Nunca puede un jugador hacer dos movimientos seguidos.
+
+2. Empiezan siempre a mover en primer lugar las piezas blancas.
+
+3. Cuando una pieza rival amenaza comer al rey (Jaque) se debe
+evitar antes de hacer cualquier otro movimiento.
+
+4. La partida termina con el Jaque Mate que es la posición en la
+que no es posible evitar que el rey sea comido por una pieza rival.
+
+5. La partida termina en Tablas (Empate) cuando no hay piezas suficientes
+por ningún bando para dar jaque mate o se repite 3 veces seguidas una misma
+posición.
+
+6. También son tablas si el rey, sin estar en jaque, no tiene movimientos
+legales sin ser comido y no hay otros movimientos legales por hacer.
+
+7. Son tablas también si después de 50 movimientos no se mueve un peón o
+se come una pieza.
+
+8. Si se juega con un reloj de Ajedrez pierde la partida el jugador que
+agota su tiempo.

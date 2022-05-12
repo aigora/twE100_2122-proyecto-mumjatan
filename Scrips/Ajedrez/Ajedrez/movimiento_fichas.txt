@@ -1,0 +1,42 @@
+
+*Movimiento de las fichas*
+
+1. CÓMO SE MUEVE EL REY
+El rey es la pieza más importante, pero también una de las más débiles. El rey sólo
+puede avanzar una casilla en cualquier dirección: hacia arriba, hacia abajo, hacia
+los lados o en diagonal. En ningún caso el rey puede moverse a una casilla en la
+que estaría en jaque, es decir, en la que pudiera ser capturado. Recuerda que cuando
+el rey está directamente amenazado por otra pieza, se dice que está "en jaque".
+
+2. CÓMO SE MUEVE LA DAMA
+La dama (reina) es la pieza más poderosa. Puede moverse en cualquier dirección (hacia
+adelante, hacia atrás, hacia los lados o en diagonal) y tantas casillas como se quiera;
+siempre y cuando no pase por encima de una pieza de su color. Como ocurre con todas las
+piezas, si la dama captura una pieza rival, su movimiento ha terminado. Observa cómo la
+dama blanca captura a la dama negra y obliga a moverse al rey negro.
+
+3. CÓMO SE MUEVE LA TORRE
+La torre puede moverse tantas casillas como quiera, pero sólo hacia adelante, hacia atrás
+o hacia los lados. ¡Las torres son piezas especialmente poderosas cuando trabajan juntas
+y se protegen mutuamente!
+
+4. CÓMO SE MUEVE EL ALFIL
+El alfil puede moverse tan lejos como quiera, pero siempre en diagonal. Cada alfil comienza
+en una casilla de un color (claro u oscuro) y debe permanecer toda la partida en ese color.
+Los dos alfiles trabajan bien juntos porque se cubren las debilidades mutuamente.
+
+5. CÓMO SE MUEVE EL CABALLO
+Los caballos se mueven de una manera muy diferente a la de las otras piezas: avanzan dos
+casillas en una dirección y luego una más en un ángulo de 90 grados, dibujando en su
+desplazamiento una letra "L" sobre el tablero. Los caballos también son las únicas piezas
+que pueden saltar sobre otras.
+
+6. CÓMO SE MUEVE EL PEÓN
+Los peones tienen la particularidad de que se mueven y capturan de diferentes maneras:
+se mueven hacia adelante, pero capturan en diagonal. Los peones sólo pueden avanzar una
+casilla en cada jugada, a excepción de su primer movimiento en el que puedan avanzar dos
+casillas. Los peones sólo pueden capturar una casilla situada en diagonal y frente a ellos.
+Nunca pueden retroceder, ni siquiera para capturar una pieza. Los peones no pueden moverse si
+en su camino encuentran una pieza que ocupe la casilla situada directamente frente a ellos y
+tampoco pueden capturarla.
+

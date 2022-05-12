@@ -152,13 +152,35 @@ void menuNormas()
 void menuMovimiento()
 {
 
- int num=0;
+int num=0;
 while(num != 1)
 {
+    FILE *p_movimientos;
+    char texto[5000];
+    int i=0;
+
     system("cls");
 
-    printf("1:Volver\n");
-    printf("Normas de movimiento:\n");
+    p_movimientos=fopen("movimiento_fichas.txt","r");
+
+    if (p_movimientos==NULL)
+    {
+        printf("Error en la apertura del archivo\n");
+    }else
+    {
+       printf("Normas de movimiento:\n");
+
+       while (fscanf(p_movimientos,"%c", &texto[i])!=EOF)
+       {
+           i++;
+       }
+
+       texto[i]='\0';
+       printf("%s",texto);
+       fclose(p_movimientos);
+    }
+
+    printf("Pulse 1 para volver\n");
     scanf("%d",&num);
 }
 system("cls");
@@ -172,9 +194,34 @@ while(num != 1)
 {
     system("cls");
 
-    printf("1:Volver\n");
-    printf("Normas basicas sobre el juego:\n");
+    FILE *p_normas;
+    char texto[5000];
+    int i=0;
+
+    system("cls");
+
+    p_normas=fopen("reglas_basicas.txt","r");
+
+    if (p_normas==NULL)
+    {
+        printf("Error en la apertura del archivo\n");
+    }else
+    {
+       printf("Normas basicas sobre el juego:\n");
+
+       while (fscanf(p_normas,"%c", &texto[i])!=EOF)
+       {
+           i++;
+       }
+
+       texto[i]='\0';
+       printf("%s",texto);
+       fclose(p_normas);
+    }
+
+    printf("Pulse 1 para volver\n");
     scanf("%d",&num);
+
 }
 system("cls");
 
