@@ -1,5 +1,5 @@
 
-*Reglas básicas*
+*REGLAS BASICAS*
 
 1. El Ajedrez se juega entre dos jugadores y mueven ambos por turnos.
 Nunca puede un jugador hacer dos movimientos seguidos.
@@ -13,14 +13,15 @@ evitar antes de hacer cualquier otro movimiento.
 que no es posible evitar que el rey sea comido por una pieza rival.
 
 5. La partida termina en Tablas (Empate) cuando no hay piezas suficientes
-por ningún bando para dar jaque mate o se repite 3 veces seguidas una misma
-posición.
+por ningun bando para dar jaque mate o se repite 3 veces seguidas una misma
+posicion.
 
-6. También son tablas si el rey, sin estar en jaque, no tiene movimientos
+6. Tambien son tablas si el rey, sin estar en jaque, no tiene movimientos
 legales sin ser comido y no hay otros movimientos legales por hacer.
 
-7. Son tablas también si después de 50 movimientos no se mueve un peón o
+7. Son tablas tambien si despues de 50 movimientos no se mueve un peon o
 se come una pieza.
 
 8. Si se juega con un reloj de Ajedrez pierde la partida el jugador que
 agota su tiempo.
+
