@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1651766904 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\tablero.c
+1652457075 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\tablero.c
 	<stdio.h>
+	"funciones.h"
 
 1652276807 source:c:\users\Ángel\documents\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\main.c
 
@@ -12,4 +13,11 @@
 
 1652297556 source:c:\users\Ángel\documents\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.c
 	"funciones.h"
+
+1652376385 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.c
+	"funciones.h"
+
+1652275349 c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.h
+
+1652288126 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\main.c
 

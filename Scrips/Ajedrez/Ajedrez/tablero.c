@@ -5,6 +5,8 @@ void Nuevapartida();
 void menuNormas();
 void menuMovimiento();
 void menuNormasBasicas();
+void menuFuncionamiento();
+
 int main()
 {
     printf("Bienvenido!!\n");
@@ -123,22 +125,26 @@ void menuNormas()
 
     while(numAux != 1)
     {
-        printf("1:Movimiento\n2:Normas Basicas\n3:Volver Menu Principal\n");
+        printf("1:Movimiento\n2:Normas Basicas\n3:Como funciona \n4:Volver Menu Principal\n");
         scanf("%d",&numA);
 
     switch(numA)
     {
         case 1:
-
             menuMovimiento();
         break;
+
         case 2:
             menuNormasBasicas();
         break;
+
         case 3:
+            menuFuncionamiento();
+        case 4:
             system("cls");
             numAux = 1;
         break;
+
         default:
             printf("Error numero");
 
@@ -227,6 +233,46 @@ system("cls");
 
 }
 
+void menuFuncionamiento()
+{
+    int num=0;
+    while(num != 1)
+    {
+    system("cls");
+
+    FILE *p_funcionamiento;
+    char texto[5000];
+    int i=0;
+
+    system("cls");
+
+    p_funcionamiento=fopen("como_funciona.txt","r");
+
+    if (p_funcionamiento==NULL)
+    {
+        printf("Error en la apertura del archivo\n");
+    }else
+    {
+       printf("Este programa funciona de la siguiente manera::\n");
+
+       while (fscanf(p_funcionamiento,"%c", &texto[i])!=EOF)
+       {
+           i++;
+       }
+
+       texto[i]='\0';
+       printf("%s",texto);
+       fclose(p_funcionamiento);
+    }
+
+    printf("Pulse 1 para volver\n");
+    scanf("%d",&num);
+
+}
+system("cls");
+
+
+}
 
 
 
