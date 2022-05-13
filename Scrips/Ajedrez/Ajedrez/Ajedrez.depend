@@ -21,3 +21,15 @@
 
 1652288126 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\main.c
 
+1652461115 source:c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\main.c
+
+1652461580 source:c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\tablero.c
+	<stdio.h>
+	"funciones.h"
+
+1652275216 c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.h
+
+1652461744 source:c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.c
+	"funciones.h"
+	<stdio.h>
+
