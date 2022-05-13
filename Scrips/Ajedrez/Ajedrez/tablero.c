@@ -20,7 +20,9 @@ do
          break;
 
         case 2://Cargar partida
+
         printf("B\n");
+        system("cls");
         break;
 
         case 3://Normas
