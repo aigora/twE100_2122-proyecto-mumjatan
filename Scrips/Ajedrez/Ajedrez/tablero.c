@@ -9,15 +9,21 @@ int main()
 
 do
 {
-    printf("1:Nueva partida\n2:Cargar partida\n3:Normas\n4:Salir\n");
-    scanf("%d",&menuNum);
- switch(menuNum)
-    {
+
+
+        printf("1:Nueva partida\n2:Cargar partida\n3:Normas\n4:Salir\n");
+
+
+        scanf("%d",&menuNum);
+
+            switch(menuNum)
+        {
+
 
         case 1://Nueva partida
         system("cls");
         Nuevapartida();
-         break;
+        break;
 
         case 2://Cargar partida
 
@@ -35,8 +41,16 @@ do
         break;
 
         default:
-        printf("Introduzca un numero\n");
-    }
+            printf("Error");
+            return 0;
+        break;
+        }
+
+
+
+
+
+
 }while(numAux!=1);
 
 return 0;
