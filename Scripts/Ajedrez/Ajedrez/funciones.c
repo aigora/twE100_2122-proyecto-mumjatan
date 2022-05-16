@@ -1,9 +1,10 @@
 #include "funciones.h"
 #include <stdio.h>
 
-void tableroShow(int *tablero[8][8])
+void tableroShow(int *tablero[8][8],int *turno)
 {
     int fila,columna;
+    printf("Lista de comandos:\n- 9 0 volver al menu principal\n- 10 0 guardar partida\n- 11 0 limpiar pantalla\n \n \n");
 
     printf("  ");
     for(fila=0;fila<8;fila++)
@@ -29,6 +30,7 @@ void tableroShow(int *tablero[8][8])
         printf(" \n");
 
     }
+    printf(".........., %d\n",*turno);
 
 }
 
@@ -480,13 +482,43 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
    }
 }
 
-void posicion(int *fila,int *columna,int *tablero[8][8])
+void posicion(int *fila,int *columna,int *tablero[8][8],int *turno)
 {
-    int fila1,columna1;
-
-    scanf("%d %d",&fila1,&columna1);
+    int fila1=-1,columna1=-1,numAux=0;
+do
+{
+     scanf("%d %d",&fila1,&columna1);
+    while(getchar() != '\n');
     *fila = fila1;
     *columna = columna1;
+    if(fila1 == 11 && columna1 == 0)
+    {
+
+        system("cls");
+
+        tableroShow(tablero,turno);
+    }
+    if(fila1 == -1||columna1 == -1)
+    {
+
+        printf("Error, Introduzca de nuevo la ultima posicion\n");
+    }else if(fila1 != -1&&columna1 != -1&&fila1 != 11)
+    {
+        if(fila1>0&&fila1<9&&columna1>0&&columna1<9)
+        {
+
+            numAux = 1;
+        }else{
+        printf("Numero no valido,Introduzca de nuevo el ultimo valor deseado\n");
+        }
+
+    }
+
+
+}while(numAux != 1);
+
+
+
 
 }
 
@@ -498,7 +530,7 @@ void Nuevapartida()
     int tablero[8][8];
     int fila,columna;
     tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(&tablero);//muestra el tablero en pantalla
+    tableroShow(&tablero,&turno);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -508,10 +540,10 @@ void Nuevapartida()
         int num3 = 0;
         int piezaI;
         int filaInicial = 0,columnaInicial = 0,filaFinal = 0,columnaFinal = 0;
-        printf(".......,%d\n",turno);
+
         do
         {
-            posicion(&filaInicial,&columnaInicial,&tablero);
+            posicion(&filaInicial,&columnaInicial,&tablero,&turno);
             fila = filaInicial;
             if(fila != 9)
             {
@@ -532,7 +564,7 @@ void Nuevapartida()
         {
             if(fila != 9)
             {
-                posicion(&filaFinal,&columnaFinal,&tablero);
+                posicion(&filaFinal,&columnaFinal,&tablero,&turno);
             verificarMovimiento(&tablero,piezaI,&num2,&num3,filaInicial,filaFinal,columnaInicial,columnaFinal,&turno);
 
             }else{
@@ -551,7 +583,7 @@ void Nuevapartida()
             tablero[filaFinal-1][columnaFinal-1]=aux;
             system("cls");
             cambioTurno(&turno);
-            tableroShow(&tablero);
+            tableroShow(&tablero,&turno);
         }
 
 
@@ -573,6 +605,7 @@ void menuNormas()
     {
         printf("1:Movimiento\n2:Normas Basicas\n3:Como funciona \n4:Volver Menu Principal\n");
         scanf("%d",&numA);
+        while(getchar() != '\n');
 
     switch(numA)
     {
@@ -592,8 +625,7 @@ void menuNormas()
         break;
 
         default:
-            printf("Error numero");
-            return 0;
+            system("cls");
         break;
 
     }
@@ -636,6 +668,7 @@ while(num != 1)
 
     printf("Pulse 1 para volver\n");
     scanf("%d",&num);
+    while(getchar() != '\n');
 }
 system("cls");
 
@@ -675,7 +708,7 @@ while(num != 1)
 
     printf("Pulse 1 para volver\n");
     scanf("%d",&num);
-
+    while(getchar() != '\n');
 }
 system("cls");
 
@@ -715,6 +748,7 @@ void menuFuncionamiento()
 
     printf("Pulse 1 para volver\n");
     scanf("%d",&num);
+    while(getchar() != '\n');
 
 }
 system("cls");

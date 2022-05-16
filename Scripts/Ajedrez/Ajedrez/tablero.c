@@ -3,18 +3,19 @@
 
 int main()
 {
-    printf("Bienvenido!!\n");
+
 
     int menuNum,numAux=0;
 
 do
 {
 
-
+        printf("Bienvenido!!\n");
         printf("1:Nueva partida\n2:Cargar partida\n3:Normas\n4:Salir\n");
 
 
         scanf("%d",&menuNum);
+        while(getchar() != '\n');
 
             switch(menuNum)
         {
@@ -41,8 +42,8 @@ do
         break;
 
         default:
-            printf("Error");
-            return 0;
+            system("cls");
+
         break;
         }
 
