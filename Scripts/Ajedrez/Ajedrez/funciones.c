@@ -275,6 +275,106 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
                     }
 
               }
+       }else
+        if(piezaI == 2)//Movimiento de torre jugador 0
+       {
+
+            if(columnaFinal == columnaInicial)//Movimientos rectos en columna
+            {
+                int i,vNum=0;
+                for(i=(filaInicial);i<(filaFinal-1);i++)
+                {
+                    printf("%c_\n",tablero[i][columnaFinal-1]);
+                    if(tablero[i][columnaFinal-1]==' ')
+                    {
+                        if(vNum == 0)
+                        {
+
+                            vNum = 0;
+                        }
+
+                    }else if(tablero[i][columnaFinal-1]!=' ')
+                    {
+                       vNum = 1;
+                       break;
+
+                    }
+
+                }
+                if(tablero[filaFinal-1][columnaInicial-1]=='P'||tablero[filaFinal-1][columnaInicial-1]=='T'||tablero[filaFinal-1][columnaInicial-1]=='C'
+                   ||tablero[filaFinal-1][columnaInicial-1]=='A'||tablero[filaFinal-1][columnaInicial-1]=='R'||tablero[filaFinal-1][columnaInicial-1]=='Q')
+                {
+                    if(vNum == 0)
+                    {
+                        vNum = 1;
+
+                    }
+
+                }
+                if(vNum == 0)
+                {
+                    *num2 = 1;
+                    *num3 = 0;
+
+                }else if(vNum == 1)
+                {
+                    printf("Movimiento no valido_c\n");
+
+                    *num2 = 1;
+                    *num3 = 1;
+
+                }
+
+            }else if(filaFinal == filaInicial)//Movimientos rectos en FILA
+            {
+                int i,vNum=0;
+                for(i=(columnaInicial);i<(columnaFinal-1);i++)
+                {
+                    printf("%c_\n",tablero[filaFinal-1][i]);
+
+                    if(tablero[filaFinal-1][i]==' ')
+                    {
+                        if(vNum == 0)
+                        {
+
+                            vNum = 0;
+                        }
+
+                    }else if(tablero[filaFinal-1][i]!=' ')
+                    {
+                       vNum = 1;
+                       break;
+
+                    }
+
+                }
+                if(tablero[filaFinal-1][columnaInicial-1]=='P'||tablero[filaFinal-1][columnaInicial-1]=='T'||tablero[filaFinal-1][columnaInicial-1]=='C'
+                   ||tablero[filaFinal-1][columnaInicial-1]=='A'||tablero[filaFinal-1][columnaInicial-1]=='R'||tablero[filaFinal-1][columnaInicial-1]=='Q')
+                {
+                    if(vNum == 0)
+                    {
+                        vNum = 1;
+
+                    }
+
+                }
+                if(vNum == 0)
+                {
+                    *num2 = 1;
+                    *num3 = 0;
+
+                }else if(vNum == 1)
+                {
+                    printf("Movimiento no valido_f\n");
+
+                    *num2 = 1;
+                    *num3 = 1;
+
+                }
+
+            }
+
+
        }
    }else if(*turno == 1)
    {

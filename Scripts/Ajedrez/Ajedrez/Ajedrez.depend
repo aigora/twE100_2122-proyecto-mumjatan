@@ -34,3 +34,15 @@
 	"funciones.h"
 	<stdio.h>
 
+1652276807 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\main.c
+
+1652543190 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\tablero.c
+	<stdio.h>
+	"funciones.h"
+
+1652275346 c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
+
+1652656825 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
+	"funciones.h"
+	<stdio.h>
+
