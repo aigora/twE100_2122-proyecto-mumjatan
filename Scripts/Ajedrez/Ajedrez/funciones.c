@@ -498,6 +498,12 @@ do
 
         tableroShow(tablero,turno);
     }
+    if(fila1 == 10&&columna1==0)
+    {
+
+        guardarPartida(tablero);
+
+    }
     if(fila1 == -1||columna1 == -1)
     {
 
@@ -758,4 +764,38 @@ system("cls");
 
 
 
+void guardarPartida(int *tablero[8][8])
+{
+    int guardado[8][8];
+    int fila, columna;
+    FILE *pf;
+    for(fila=0; fila<8; fila++)
+    {
+        for(columna=0; columna<8; columna++)
+         {
+             guardado[fila][columna]=tablero[fila][columna];
+         }
+    }
 
+    pf = fopen("guardado.txt", "w");
+    if (pf == NULL)
+    {
+      printf("Error al abrir el fichero.\n");
+      return -1;
+    }
+    else
+    {
+                for(fila=0; fila<8; fila++)
+                {
+                  for(columna=0; columna<8; columna++)
+                  {
+                    fprintf(pf,"%d,",guardado[fila][columna]);
+                  }
+                }
+
+
+      fclose(pf);
+      return 0;
+    }
+
+}
