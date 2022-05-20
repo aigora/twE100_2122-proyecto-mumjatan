@@ -482,11 +482,12 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
    }
 }
 
-void posicion(int *fila,int *columna,int *tablero[8][8],int *turno)
+void posicion(int *fila,int *columna,int *tablero[8][8],int *turno,int coordenada)
 {
     int fila1=-1,columna1=-1,numAux=0;
 do
 {
+    printf("Introduca la coordenada %d: ",coordenada);
      scanf("%d %d",&fila1,&columna1);
     while(getchar() != '\n');
     *fila = fila1;
@@ -502,13 +503,19 @@ do
     {
 
         guardarPartida(tablero);
+        printf("Partida guardada\n");
 
+    }
+    if(fila1 == 9&&columna1==0)
+    {
+
+        numAux =1;
     }
     if(fila1 == -1||columna1 == -1)
     {
 
         printf("Error, Introduzca de nuevo la ultima posicion\n");
-    }else if(fila1 != -1&&columna1 != -1&&fila1 != 11)
+    }else if(fila1 != -1&&columna1 != -1&&fila1 != 11&&fila1!=9&&fila1 != 10)
     {
         if(fila1>0&&fila1<9&&columna1>0&&columna1<9)
         {
@@ -534,12 +541,13 @@ void Nuevapartida()
 
     int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
     int tablero[8][8];
-    int fila,columna;
+    int fila=0,columna=0;
     tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
     tableroShow(&tablero,&turno);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
+
         char aux;
         int num = 0;
         int num2 = 0;
@@ -549,7 +557,7 @@ void Nuevapartida()
 
         do
         {
-            posicion(&filaInicial,&columnaInicial,&tablero,&turno);
+            posicion(&filaInicial,&columnaInicial,&tablero,&turno,1);
             fila = filaInicial;
             if(fila != 9)
             {
@@ -570,7 +578,7 @@ void Nuevapartida()
         {
             if(fila != 9)
             {
-                posicion(&filaFinal,&columnaFinal,&tablero,&turno);
+                posicion(&filaFinal,&columnaFinal,&tablero,&turno,2);
             verificarMovimiento(&tablero,piezaI,&num2,&num3,filaInicial,filaFinal,columnaInicial,columnaFinal,&turno);
 
             }else{

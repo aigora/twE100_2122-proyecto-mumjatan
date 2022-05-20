@@ -10,8 +10,9 @@ int main()
 do
 {
 
-        printf("Bienvenido!!\n");
-        printf("1:Nueva partida\n2:Cargar partida\n3:Normas\n4:Salir\n");
+        printf("Bienvenido!!\n\n");
+        printf("1:Nueva partida\n\n2:Nueva partida contra AI\n\n3:Cargar ultima partida\n\n4:Menu de normas\n\n5:Salir\n");
+
 
 
         scanf("%d",&menuNum);
@@ -25,19 +26,23 @@ do
         system("cls");
         Nuevapartida();
         break;
+        case 2://Nueva partida contra AI
+        printf("A");
+         system("cls");
+        break;
 
-        case 2://Cargar partida
+        case 3://Cargar partida
 
         printf("B\n");
         system("cls");
         break;
 
-        case 3://Normas
+        case 4://Normas
         system("cls");
         menuNormas();
         break;
 
-        case 4://Salir
+        case 5://Salir
         numAux = 1;
         break;
 
