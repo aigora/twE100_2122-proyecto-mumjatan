@@ -32,9 +32,9 @@ do
         break;
 
         case 3://Cargar partida
-
-        printf("B\n");
         system("cls");
+        cargarPartida();
+
         break;
 
         case 4://Normas

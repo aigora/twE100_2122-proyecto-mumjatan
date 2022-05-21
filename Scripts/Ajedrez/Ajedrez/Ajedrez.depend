@@ -36,13 +36,13 @@
 
 1652276807 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\main.c
 
-1653085748 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\tablero.c
+1653143403 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\tablero.c
 	<stdio.h>
 	"funciones.h"
 
-1653085382 c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
+1653144291 c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
 
-1653085431 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
+1653146419 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
 	"funciones.h"
 	<stdio.h>
 

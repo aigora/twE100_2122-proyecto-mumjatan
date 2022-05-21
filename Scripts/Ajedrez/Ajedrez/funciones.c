@@ -502,7 +502,7 @@ do
     if(fila1 == 10&&columna1==0)
     {
 
-        guardarPartida(tablero);
+        guardarPartida(tablero,turno);
         printf("Partida guardada\n");
 
     }
@@ -772,11 +772,11 @@ system("cls");
 
 
 
-void guardarPartida(int *tablero[8][8])
+void guardarPartida(int *tablero[8][8],int *turno)
 {
     int guardado[8][8];
     int fila, columna;
-    FILE *pf;
+    FILE *pf,*pt;
     for(fila=0; fila<8; fila++)
     {
         for(columna=0; columna<8; columna++)
@@ -786,7 +786,8 @@ void guardarPartida(int *tablero[8][8])
     }
 
     pf = fopen("guardado.txt", "w");
-    if (pf == NULL)
+    pt = fopen("turnoGuardado.txt","w");
+    if (pf == NULL||pt==NULL)
     {
       printf("Error al abrir el fichero.\n");
       return -1;
@@ -797,13 +798,137 @@ void guardarPartida(int *tablero[8][8])
                 {
                   for(columna=0; columna<8; columna++)
                   {
-                    fprintf(pf,"%d,",guardado[fila][columna]);
+                    fprintf(pf,"%d; ",guardado[fila][columna]);
                   }
+                 fprintf(pf,"\n");
                 }
 
-
+        fprintf(pt,"%d,",*turno);
+        fclose(pt);
       fclose(pf);
       return 0;
     }
+
+}
+void tableroLoad(int *tablero[8][8],int *turno)
+{
+    int fila,columna,vector1[8],vector2[8],vector3[8],vector4[8],vector5[8],vector6[8],vector7[8],vector8[8],i=0;
+    FILE *pf,*pt;
+    pf=fopen("guardado.txt","r");
+     pt = fopen("turnoGuardado.txt","r");
+     if(pf==NULL||pt==NULL)
+     {
+         printf("Error 404\n");
+         return -1;
+     }else
+     {
+         fscanf(pt,"%d,",turno);
+
+        while(fscanf(pf,"%d; %d; %d; %d; %d; %d; %d; %d;\n",&vector1[i],&vector2[i],&vector3[i],&vector4[i],&vector5[i],&vector6[i],&vector7[i],&vector8[i]) != EOF)
+        {
+            i+=1;
+
+        }
+
+        for(i=0;i<8;i++)
+        {
+            tablero[i][0]=vector1[i];
+            tablero[i][1]=vector2[i];
+            tablero[i][2]=vector3[i];
+            tablero[i][3]=vector4[i];
+            tablero[i][4]=vector5[i];
+            tablero[i][5]=vector6[i];
+            tablero[i][6]=vector7[i];
+            tablero[i][7]=vector8[i];
+
+        }
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+     pclose(pf);
+     fclose(pt);
+}
+
+
+void cargarPartida()
+{
+     int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
+    int tablero[8][8];
+    int fila=0,columna=0;
+    tableroLoad(&tablero,&turno);//inicializa el tablero con cada pieza en su posicion
+    tableroShow(&tablero,&turno);//muestra el tablero en pantalla
+
+    while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
+    {
+
+        char aux;
+        int num = 0;
+        int num2 = 0;
+        int num3 = 0;
+        int piezaI;
+        int filaInicial = 0,columnaInicial = 0,filaFinal = 0,columnaFinal = 0;
+
+        do
+        {
+            posicion(&filaInicial,&columnaInicial,&tablero,&turno,1);
+            fila = filaInicial;
+            if(fila != 9)
+            {
+                 aux = tablero[filaInicial-1][columnaInicial-1];
+            reconocerPieza(tablero[filaInicial-1][columnaInicial-1],turno,&num,&piezaI);
+            //printf("%c.\n",tablero[filaInicial - 1][columnaInicial - 1]);
+
+            }else{
+
+            num = 1;
+            }
+
+
+
+
+        }while(num != 1);
+        do
+        {
+            if(fila != 9)
+            {
+                posicion(&filaFinal,&columnaFinal,&tablero,&turno,2);
+            verificarMovimiento(&tablero,piezaI,&num2,&num3,filaInicial,filaFinal,columnaInicial,columnaFinal,&turno);
+
+            }else{
+            num2 = 1;
+            num3 = 1;
+            }
+
+
+
+
+        }while(num2 != 1);
+
+        if(num3 == 0)
+        {
+            tablero[filaInicial-1][columnaInicial-1] = ' ';
+            tablero[filaFinal-1][columnaFinal-1]=aux;
+            system("cls");
+            cambioTurno(&turno);
+            tableroShow(&tablero,&turno);
+        }
+
+
+
+
+
+    }
+
+    system("cls");
 
 }
