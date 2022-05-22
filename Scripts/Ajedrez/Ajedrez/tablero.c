@@ -26,15 +26,15 @@ do
         system("cls");
         Nuevapartida();
         break;
+
         case 2://Nueva partida contra AI
-        printf("A");
-         system("cls");
+        system("cls");
+        NuevaPartidaAI();
         break;
 
         case 3://Cargar partida
         system("cls");
         cargarPartida();
-
         break;
 
         case 4://Normas
