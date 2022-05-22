@@ -177,7 +177,7 @@ void cambioTurno(int *turno)
 
 void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int *turno)
 {
-   if(*turno == 0)
+   if(*turno == 0)//movimientod del jugador 0
    {
 
        if(piezaI == 1)//movimiento del peon del jugador 0
@@ -284,6 +284,8 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
             if(columnaFinal == columnaInicial)//Movimientos rectos en columna
             {
                 int i,vNum=0;
+                if(filaFinal>filaInicial)
+                {
                 for(i=(filaInicial);i<(filaFinal-1);i++)
                 {
                     printf("%c_\n",tablero[i][columnaFinal-1]);
@@ -303,8 +305,33 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
                     }
 
                 }
-                if(tablero[filaFinal-1][columnaInicial-1]=='P'||tablero[filaFinal-1][columnaInicial-1]=='T'||tablero[filaFinal-1][columnaInicial-1]=='C'
-                   ||tablero[filaFinal-1][columnaInicial-1]=='A'||tablero[filaFinal-1][columnaInicial-1]=='R'||tablero[filaFinal-1][columnaInicial-1]=='Q')
+
+                }else if(filaInicial>filaFinal)
+                {
+                     for(i=(filaInicial);i<(filaFinal-1);i++)
+                {
+                    printf("%c_\n",tablero[i][columnaFinal-1]);
+                    if(tablero[i][columnaFinal-1]==' ')
+                    {
+                        if(vNum == 0)
+                        {
+
+                            vNum = 0;
+                        }
+
+                    }else if(tablero[i][columnaFinal-1]!=' ')
+                    {
+                       vNum = 1;
+                       break;
+
+                    }
+
+                }
+
+                }
+
+                if(tablero[filaFinal-1][columnaFinal-1]=='P'||tablero[filaFinal-1][columnaFinal-1]=='T'||tablero[filaFinal-1][columnaFinal-1]=='C'
+                   ||tablero[filaFinal-1][columnaFinal-1]=='A'||tablero[filaFinal-1][columnaFinal-1]=='R'||tablero[filaFinal-1][columnaFinal-1]=='Q')
                 {
                     if(vNum == 0)
                     {
@@ -330,8 +357,12 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
             }else if(filaFinal == filaInicial)//Movimientos rectos en FILA
             {
                 int i,vNum=0;
-                for(i=(columnaInicial);i<(columnaFinal-1);i++)
+                if(columnaFinal>columnaInicial)
                 {
+
+                     for(i=(columnaInicial);i<(columnaFinal-1);i++)
+                {
+
                     printf("%c_\n",tablero[filaFinal-1][i]);
 
                     if(tablero[filaFinal-1][i]==' ')
@@ -350,11 +381,38 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
                     }
 
                 }
-                if(tablero[filaFinal-1][columnaInicial-1]=='P'||tablero[filaFinal-1][columnaInicial-1]=='T'||tablero[filaFinal-1][columnaInicial-1]=='C'
-                   ||tablero[filaFinal-1][columnaInicial-1]=='A'||tablero[filaFinal-1][columnaInicial-1]=='R'||tablero[filaFinal-1][columnaInicial-1]=='Q')
+                }else if(columnaInicial>columnaFinal)
+                {
+                     for(i=(columnaFinal);i<(columnaInicial-1);i++)
+                {
+
+                    printf("%c_\n",tablero[filaFinal-1][i]);
+
+                    if(tablero[filaFinal-1][i]==' ')
+                    {
+                        if(vNum == 0)
+                        {
+
+                            vNum = 0;
+                        }
+
+                    }else if(tablero[filaFinal-1][i]!=' ')
+                    {
+                       vNum = 1;
+                       break;
+
+                    }
+
+                }
+
+                }
+
+                if(tablero[filaFinal-1][columnaFinal-1]=='P'||tablero[filaFinal-1][columnaFinal-1]=='T'||tablero[filaFinal-1][columnaFinal-1]=='C'
+                   ||tablero[filaFinal-1][columnaFinal-1]=='A'||tablero[filaFinal-1][columnaFinal-1]=='R'||tablero[filaFinal-1][columnaFinal-1]=='Q')
                 {
                     if(vNum == 0)
                     {
+                        printf("%c\n",tablero[filaFinal-1][columnaFinal-1]);
                         vNum = 1;
 
                     }
@@ -482,16 +540,21 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
    }
 }
 
-void posicion(int *fila,int *columna,int *tablero[8][8],int *turno,int coordenada)
+void posicion(mCoordenadas *mCoord,int *tablero[8][8],int *turno,int coordenada)
 {
-    int fila1=-1,columna1=-1,numAux=0;
-do
-{
+    if(coordenada == 1)
+    {
+
+        mCoord->filaInicial = -1;
+        mCoord->columnaInicial = -1;
+        int numAux=0,fila1=-1,columna1=-1;
+    do
+    {
     printf("Introduca la coordenada %d: ",coordenada);
      scanf("%d %d",&fila1,&columna1);
     while(getchar() != '\n');
-    *fila = fila1;
-    *columna = columna1;
+    mCoord->filaInicial = fila1;
+    mCoord->columnaInicial = columna1;
     if(fila1 == 11 && columna1 == 0)
     {
 
@@ -528,7 +591,60 @@ do
     }
 
 
-}while(numAux != 1);
+    }while(numAux != 1);
+
+    }else if(coordenada == 2)
+    {
+        mCoord->filaFinal = -1;
+        mCoord->columnaFinal = -1;
+        int numAux=0,fila1=-1,columna1=-1;
+    do
+    {
+    printf("Introduca la coordenada %d: ",coordenada);
+     scanf("%d %d",&fila1,&columna1);
+    while(getchar() != '\n');
+    mCoord->filaFinal = fila1;
+    mCoord->columnaFinal = columna1;
+    if(fila1 == 11 && columna1 == 0)
+    {
+
+        system("cls");
+
+        tableroShow(tablero,turno);
+    }
+    if(fila1 == 10&&columna1==0)
+    {
+
+        guardarPartida(tablero,turno);
+        printf("Partida guardada\n");
+
+    }
+    if(fila1 == 9&&columna1==0)
+    {
+
+        numAux =1;
+    }
+    if(fila1 == -1||columna1 == -1)
+    {
+
+        printf("Error, Introduzca de nuevo la ultima posicion\n");
+    }else if(fila1 != -1&&columna1 != -1&&fila1 != 11&&fila1!=9&&fila1 != 10)
+    {
+        if(fila1>0&&fila1<9&&columna1>0&&columna1<9)
+        {
+
+            numAux = 1;
+        }else{
+        printf("Numero no valido,Introduzca de nuevo el ultimo valor deseado\n");
+        }
+
+    }
+
+
+    }while(numAux != 1);
+
+    }
+
 
 
 
@@ -552,16 +668,18 @@ void Nuevapartida()
         int num2 = 0;
         int num3 = 0;
         int piezaI;
-        int filaInicial = 0,columnaInicial = 0,filaFinal = 0,columnaFinal = 0;
+
+        mCoordenadas coordenadas;
+
 
         do
         {
-            posicion(&filaInicial,&columnaInicial,&tablero,&turno,1);
-            fila = filaInicial;
+            posicion(&coordenadas,&tablero,&turno,1);
+            fila = coordenadas.filaInicial;
             if(fila != 9)
             {
-                 aux = tablero[filaInicial-1][columnaInicial-1];
-            reconocerPieza(tablero[filaInicial-1][columnaInicial-1],turno,&num,&piezaI);
+                 aux = tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1];
+            reconocerPieza(tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1],turno,&num,&piezaI);
             //printf("%c.\n",tablero[filaInicial - 1][columnaInicial - 1]);
 
             }else{
@@ -577,8 +695,8 @@ void Nuevapartida()
         {
             if(fila != 9)
             {
-                posicion(&filaFinal,&columnaFinal,&tablero,&turno,2);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,filaInicial,filaFinal,columnaInicial,columnaFinal,&turno);
+                posicion(&coordenadas,&tablero,&turno,2);
+            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,&turno);
 
             }else{
             num2 = 1;
@@ -592,8 +710,8 @@ void Nuevapartida()
 
         if(num3 == 0)
         {
-            tablero[filaInicial-1][columnaInicial-1] = ' ';
-            tablero[filaFinal-1][columnaFinal-1]=aux;
+            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
+            tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             cambioTurno(&turno);
             tableroShow(&tablero,&turno);
@@ -604,7 +722,9 @@ void Nuevapartida()
 
 
     }
+#pragma region mov
 
+#pragma endregion
     system("cls");
 
 
@@ -876,16 +996,16 @@ void cargarPartida()
         int num2 = 0;
         int num3 = 0;
         int piezaI;
-        int filaInicial = 0,columnaInicial = 0,filaFinal = 0,columnaFinal = 0;
+        mCoordenadas coordenadas;
 
         do
         {
-            posicion(&filaInicial,&columnaInicial,&tablero,&turno,1);
-            fila = filaInicial;
+            posicion(&coordenadas,&tablero,&turno,1);
+            fila = coordenadas.filaInicial;
             if(fila != 9)
             {
-                 aux = tablero[filaInicial-1][columnaInicial-1];
-            reconocerPieza(tablero[filaInicial-1][columnaInicial-1],turno,&num,&piezaI);
+                 aux = tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1];
+            reconocerPieza(tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1],turno,&num,&piezaI);
             //printf("%c.\n",tablero[filaInicial - 1][columnaInicial - 1]);
 
             }else{
@@ -901,8 +1021,8 @@ void cargarPartida()
         {
             if(fila != 9)
             {
-                posicion(&filaFinal,&columnaFinal,&tablero,&turno,2);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,filaInicial,filaFinal,columnaInicial,columnaFinal,&turno);
+                posicion(&coordenadas,&tablero,&turno,2);
+            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,&turno);
 
             }else{
             num2 = 1;
@@ -916,8 +1036,8 @@ void cargarPartida()
 
         if(num3 == 0)
         {
-            tablero[filaInicial-1][columnaInicial-1] = ' ';
-            tablero[filaFinal-1][columnaFinal-1]=aux;
+            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
+            tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             cambioTurno(&turno);
             tableroShow(&tablero,&turno);
@@ -949,16 +1069,16 @@ void NuevaPartidaAI()
         int num2 = 0;
         int num3 = 0;
         int piezaI;
-        int filaInicial = 0,columnaInicial = 0,filaFinal = 0,columnaFinal = 0;
+        mCoordenadas coordenadas;
 
         do
         {
-            posicion(&filaInicial,&columnaInicial,&tablero,&turno,1);
-            fila = filaInicial;
+            posicion(&coordenadas,&tablero,&turno,1);
+            fila = coordenadas.filaInicial;
             if(fila != 9)
             {
-                 aux = tablero[filaInicial-1][columnaInicial-1];
-            reconocerPieza(tablero[filaInicial-1][columnaInicial-1],turno,&num,&piezaI);
+                 aux = tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1];
+            reconocerPieza(tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1],turno,&num,&piezaI);
             //printf("%c.\n",tablero[filaInicial - 1][columnaInicial - 1]);
 
             }else{
@@ -974,8 +1094,8 @@ void NuevaPartidaAI()
         {
             if(fila != 9)
             {
-                posicion(&filaFinal,&columnaFinal,&tablero,&turno,2);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,filaInicial,filaFinal,columnaInicial,columnaFinal,&turno);
+                posicion(&coordenadas,&tablero,&turno,2);
+            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,&turno);
 
             }else{
             num2 = 1;
@@ -989,8 +1109,8 @@ void NuevaPartidaAI()
 
         if(num3 == 0)
         {
-            tablero[filaInicial-1][columnaInicial-1] = ' ';
-            tablero[filaFinal-1][columnaFinal-1]=aux;
+            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
+            tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             movimientoAI(&tablero);
             tableroShow(&tablero,&turno);
