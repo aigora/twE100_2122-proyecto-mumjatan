@@ -558,6 +558,7 @@ void posicion(mCoordenadas *mCoord,int *tablero[8][8],int *turno,int coordenada)
     if(fila1 == 11 && columna1 == 0)
     {
 
+
         system("cls");
 
         tableroShow(tablero,turno);
