@@ -42,7 +42,7 @@
 
 1653230379 c:\users\Ángel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
 
-1653233276 source:c:\users\Ángel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
+1653300196 source:c:\users\Ángel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
 	"funciones.h"
 	<stdio.h>
 
@@ -67,6 +67,18 @@
 1653220766 c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
 
 1653226234 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\tablero.c
+	<stdio.h>
+	"funciones.h"
+
+1653267796 source:c:\users\luis\documents\universidad\informatica\ajedrez github\funciones.c
+	"funciones.h"
+	<stdio.h>
+
+1653197978 c:\users\luis\documents\universidad\informatica\ajedrez github\funciones.h
+
+1652244406 source:c:\users\luis\documents\universidad\informatica\ajedrez github\main.c
+
+1653199318 source:c:\users\luis\documents\universidad\informatica\ajedrez github\tablero.c
 	<stdio.h>
 	"funciones.h"
 
