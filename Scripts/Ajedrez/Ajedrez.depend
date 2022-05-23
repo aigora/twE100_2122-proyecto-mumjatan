@@ -1,92 +1,13 @@
 # depslib dependency file v1.0
-1652457075 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\tablero.c
-	<stdio.h>
-	"funciones.h"
-
-1652276807 source:c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\main.c
-
-1652543190 source:c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\tablero.c
-	<stdio.h>
-	"funciones.h"
-
-1652275346 c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.h
-
-1652543247 source:c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.c
+1653272116 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\documentos\scripts\ajedrez\funciones.c
 	"funciones.h"
 	<stdio.h>
 
-1652376385 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.c
-	"funciones.h"
+1653271706 c:\users\julia\onedrive - universidad polit嶰nica de madrid\documentos\scripts\ajedrez\funciones.h
 
-1652275349 c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.h
+1653271706 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\documentos\scripts\ajedrez\main.c
 
-1652288126 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\main.c
-
-1652461115 source:c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\main.c
-
-1652461580 source:c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\tablero.c
+1653271706 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\documentos\scripts\ajedrez\tablero.c
 	<stdio.h>
 	"funciones.h"
-
-1652275216 c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.h
-
-1652461744 source:c:\users\ftlag\onedrive\documentos\github\twe100_2122-proyecto-mumjatan\scrips\ajedrez\ajedrez\funciones.c
-	"funciones.h"
-	<stdio.h>
-
-1652276807 source:c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\main.c
-
-1653231718 source:c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\tablero.c
-	<stdio.h>
-	"funciones.h"
-
-1653230379 c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
-
-1653300196 source:c:\users\聲gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
-	"funciones.h"
-	<stdio.h>
-
-1653056636 source:c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\main.c
-
-1653250828 source:c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\tablero.c
-	<stdio.h>
-	"funciones.h"
-
-1653250828 c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
-
-1653062313 source:c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
-	"funciones.h"
-	<stdio.h>
-
-1653220766 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\main.c
-
-1653226234 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.c
-	"funciones.h"
-	<stdio.h>
-
-1653220766 c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\funciones.h
-
-1653226234 source:c:\users\julia\onedrive - universidad polit嶰nica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\ajedrez\tablero.c
-	<stdio.h>
-	"funciones.h"
-
-1653267796 source:c:\users\luis\documents\universidad\informatica\ajedrez github\funciones.c
-	"funciones.h"
-	<stdio.h>
-
-1653197978 c:\users\luis\documents\universidad\informatica\ajedrez github\funciones.h
-
-1652244406 source:c:\users\luis\documents\universidad\informatica\ajedrez github\main.c
-
-1653199318 source:c:\users\luis\documents\universidad\informatica\ajedrez github\tablero.c
-	<stdio.h>
-	"funciones.h"
-
-1652244406 source:c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez github\main.c
-
-1653199318 source:c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez github\tablero.c
-	<stdio.h>
-	"funciones.h"
-
-1653197978 c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez github\funciones.h
 
