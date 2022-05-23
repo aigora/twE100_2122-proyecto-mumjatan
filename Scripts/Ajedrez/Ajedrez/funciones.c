@@ -74,7 +74,7 @@ void tableroStart(int *tablero[8][8])
 void reconocerPieza(int pieza,int turno,int *num,int *piezaI)
 {
 
-    if(turno == 0)
+    if(turno == 0 || turno == 32)
     {
         if((pieza>64)&&(pieza<91))
         {
@@ -163,7 +163,7 @@ void reconocerPieza(int pieza,int turno,int *num,int *piezaI)
 
 void cambioTurno(int *turno)
 {
-    if(*turno == 0)
+    if(*turno == 0 || *turno == 32)
     {
         *turno = 1;
 
@@ -177,7 +177,7 @@ void cambioTurno(int *turno)
 
 void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int *turno)
 {
-   if(*turno == 0)//movimientod del jugador 0
+   if(*turno == 0 || turno == 32)//movimientod del jugador 0
    {
 
        if(piezaI == 1)//movimiento del peon del jugador 0
