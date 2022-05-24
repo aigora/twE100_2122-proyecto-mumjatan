@@ -1,10 +1,10 @@
-#include "funciones.h"
+#include "functions.h"
 #include <stdio.h>
 
 void tableroShow(int *tablero[8][8],int *turno)
 {
     int fila,columna;
-    printf("Lista de comandos:\n- 9 0 volver al menu principal\n- 10 0 guardar partida\n- 11 0 limpiar pantalla\n \n \n");
+    printf("\nLista de comandos:\n- 9 0 volver al menu principal\n- 10 0 guardar partida\n- 11 0 limpiar pantalla\n \n \n");
 
     printf("  ");
     for(fila=0;fila<8;fila++)
