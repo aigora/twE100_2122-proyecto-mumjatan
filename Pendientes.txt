@@ -8,12 +8,12 @@ lista de cosas por implementar:
 -movimiento alfil jugador 1
 -movimiento rey jugador 1
 -movimiento reina jugador 1
--movimiento torre jugador AI
--movimiento caballo jugador AI
+-movimiento torre jugador AI(Hecho)
+-movimiento caballo jugador AI(Hecho)
 -movimiento alfil jugador AI
 -movimiento rey jugador AI
 -movimiento reina jugador AI
 
 lista de bugs por resolver:
 
--al introducir en el scanf de posicion solo 1 numero salta de linea para volver a pedir ese numero pero no sale el printf
+-al introducir en el scanf de posicion solo 1 numero salta de linea para volver a pedir ese numero pero no sale el printf(no hay solucion aparente)
