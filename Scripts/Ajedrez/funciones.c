@@ -4,6 +4,7 @@
 void tableroShow(int *tablero[8][8],int turno)
 {
     int fila,columna;
+    printf("%d\n", turno);
     printf("\nLista de comandos:\n- 9 0 volver al menu principal\n- 10 0 guardar partida\n- 11 0 limpiar pantalla\n \n \n");
 
     printf("  ");
@@ -667,6 +668,7 @@ void Nuevapartida()
 {
 
     int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
+    printf("%d\n", turno);
     int tablero[8][8];
     int fila=0,columna=0;
     tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
