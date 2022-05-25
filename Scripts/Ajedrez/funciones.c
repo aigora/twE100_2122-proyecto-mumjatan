@@ -1,6 +1,7 @@
 #include "functions.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 void tableroShow(int tablero[][8],int turno)
 {
@@ -179,6 +180,7 @@ void cambioTurno(int *turno)
 
 void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
 {
+int numAux=0;
    if(turno == 0)//movimientod del jugador 0
    {
 
@@ -435,10 +437,179 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 }
 
             }
+       }
+            else if(piezaI==3)//movimientos del alfil turno 0
+           {
+           if(abs(filaFinal-filaInicial)-abs(columnaFinal-columnaInicial)!=0)
+           {
+               printf("Movimiento no valido\n");
+               *num2 = 1;
+               *num3 = 1;
+           }
+           else
+           {
+                int incr = abs(filaFinal-filaInicial);
+                int vNum=0,i;
+                int vert, dir;
+
+                if(filaFinal-filaInicial>0)//movimiento vertical
+                {
+                    vert=1;//movimiento hacia abajo
+                }
+                else
+                {
+                    vert=0;//movimiento hacia arriba
+                }
+
+                if(columnaFinal-columnaInicial>0)//movimiento horizontal
+                {
+                    dir=0;//movimiento derecha
+                }
+                else
+                {
+                    dir=1;//movimiento izquierda
+                }
+
+                if(vert == 0)//movimiento hacia arriba
+                {
+
+                    if(dir == 0&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-i][columnaInicial+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial-incr][columnaInicial+incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial+incr]='a';
+                                numAux = 1;
+
+                            }else if(tablero[filaInicial-incr][columnaInicial+incr]<91&&tablero[filaInicial-incr][columnaInicial+incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial-incr][columnaInicial+incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial+incr]='a';
+                                numAux = 1;
+
+                            }
+                        }
+                    }
+                    if(dir==1&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-i][columnaInicial-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial-incr][columnaInicial-incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial-incr]='a';
+                                numAux = 1;
+
+                            }else if(tablero[filaInicial-incr][columnaInicial-incr]<91&&tablero[filaInicial-incr][columnaInicial-incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial-incr][columnaInicial-incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial-incr]='a';
+                                numAux = 1;
+
+                            }
+                        }
+                    }
+                }
+                if(vert == 1)//movimiento hacia debajo
+                {
+
+                    if(dir == 0&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial+i][columnaInicial+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial+incr][columnaInicial+incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial+incr]='a';
+                                numAux = 1;
+
+                            }else if(tablero[filaInicial+incr][columnaInicial+incr]<91&&tablero[filaInicial+incr][columnaInicial+incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial+incr][columnaInicial+incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial+incr]='a';
+                                numAux = 1;
+
+                            }
+                        }
+                    }
+                    if(dir==1&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial+i][columnaInicial-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial+incr][columnaInicial-incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial-incr]='a';
+                                numAux = 1;
+
+                            }else if(tablero[filaInicial+incr][columnaInicial-incr]<91&&tablero[filaInicial+incr][columnaInicial-incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial+incr][columnaInicial-incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial-incr]='a';
+                                numAux = 1;
+
+                            }
+                        }
+                    }
+                }
+
+
+
+
+
+           }
+           }
 
 
        }
-   }else if(turno == 1)
+
+
+
+
+
+   else if(turno == 1)
    {
 
     if(piezaI == 1)//movimiento del peon del jugador 1
