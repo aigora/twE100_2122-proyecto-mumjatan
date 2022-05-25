@@ -1,7 +1,7 @@
 #include "functions.h"
 #include <stdio.h>
 
-void tableroShow(int *tablero[8][8],int *turno)
+void tableroShow(int *tablero[8][8],int turno)
 {
     int fila,columna;
     printf("\nLista de comandos:\n- 9 0 volver al menu principal\n- 10 0 guardar partida\n- 11 0 limpiar pantalla\n \n \n");
@@ -30,7 +30,7 @@ void tableroShow(int *tablero[8][8],int *turno)
         printf(" \n");
 
     }
-    printf(".........., %d\n",*turno);
+    printf(".........., %d\n",turno);
 
 }
 
@@ -175,9 +175,9 @@ void cambioTurno(int *turno)
 
 }
 
-void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int *turno)
+void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
 {
-   if(*turno == 0)//movimientod del jugador 0
+   if(turno == 0)//movimientod del jugador 0
    {
 
        if(piezaI == 1)//movimiento del peon del jugador 0
@@ -436,7 +436,7 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
 
 
        }
-   }else if(*turno == 1)
+   }else if(turno == 1)
    {
 
     if(piezaI == 1)//movimiento del peon del jugador 1
@@ -540,7 +540,7 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
    }
 }
 
-void posicion(mCoordenadas *mCoord,int *tablero[8][8],int *turno,int coordenada,int AI)
+void posicion(mCoordenadas *mCoord,int *tablero[8][8],int turno,int coordenada,int AI)
 {
     if(coordenada == 1)
     {
@@ -670,7 +670,7 @@ void Nuevapartida()
     int tablero[8][8];
     int fila=0,columna=0;
     tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(&tablero,&turno);//muestra el tablero en pantalla
+    tableroShow(&tablero,turno);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -686,7 +686,7 @@ void Nuevapartida()
 
         do
         {
-            posicion(&coordenadas,&tablero,&turno,1,0);
+            posicion(&coordenadas,&tablero,turno,1,0);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -707,8 +707,8 @@ void Nuevapartida()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,&tablero,&turno,2,0);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,&turno);
+                posicion(&coordenadas,&tablero,turno,2,0);
+            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
 
             }else{
             num2 = 1;
@@ -726,7 +726,7 @@ void Nuevapartida()
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             cambioTurno(&turno);
-            tableroShow(&tablero,&turno);
+            tableroShow(&tablero,turno);
         }
 
 
@@ -902,7 +902,7 @@ system("cls");
 
 }
 
-void guardarPartida(int *tablero[8][8],int *turno)
+void guardarPartida(int *tablero[8][8],int turno)
 {
     int guardado[8][8];
     int fila, columna;
@@ -933,7 +933,7 @@ void guardarPartida(int *tablero[8][8],int *turno)
                  fprintf(pf,"\n");
                 }
 
-        fprintf(pt,"%d,",*turno);
+        fprintf(pt,"%d,",&turno);
         fclose(pt);
       fclose(pf);
       return 0;
@@ -996,7 +996,7 @@ void cargarPartida()
     int tablero[8][8];
     int fila=0,columna=0;
     tableroLoad(&tablero,&turno);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(&tablero,&turno);//muestra el tablero en pantalla
+    tableroShow(&tablero,turno);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -1010,7 +1010,7 @@ void cargarPartida()
 
         do
         {
-            posicion(&coordenadas,&tablero,&turno,1,0);
+            posicion(&coordenadas,&tablero,turno,1,0);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -1031,8 +1031,8 @@ void cargarPartida()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,&tablero,&turno,2,0);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,&turno);
+                posicion(&coordenadas,&tablero,turno,2,0);
+            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
 
             }else{
             num2 = 1;
@@ -1050,7 +1050,7 @@ void cargarPartida()
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             cambioTurno(&turno);
-            tableroShow(&tablero,&turno);
+            tableroShow(&tablero,turno);
         }
 
 
@@ -1069,7 +1069,7 @@ void NuevaPartidaAI()
     int tablero[8][8];
     int fila=0,columna=0;
     tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(&tablero,&turno);//muestra el tablero en pantalla
+    tableroShow(&tablero,turno);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -1083,7 +1083,7 @@ void NuevaPartidaAI()
 
         do
         {
-            posicion(&coordenadas,&tablero,&turno,1,1);
+            posicion(&coordenadas,&tablero,turno,1,1);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -1104,8 +1104,8 @@ void NuevaPartidaAI()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,&tablero,&turno,2,1);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,&turno);
+                posicion(&coordenadas,&tablero,turno,2,1);
+            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
 
             }else{
             num2 = 1;
@@ -1123,7 +1123,7 @@ void NuevaPartidaAI()
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             movimientoAI(&tablero);
-            tableroShow(&tablero,&turno);
+            tableroShow(&tablero,turno);
         }
 
 
