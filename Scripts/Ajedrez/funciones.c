@@ -1137,15 +1137,19 @@ void NuevaPartidaAI()
 
 }
 
-void movimientoAI(int *tablero[8][8])
+void movimientoAI(int *tablero[8][8])//hay un limite de 15000 posibles calculos de posiciones aleatorias.
 {
-    int filaInicial=-1,columnaInicial=-1,numAux1=0,i;
+    int filaInicial=-1,columnaInicial=-1,numAux1=0,i,comb=0;
     do
     {
         filaInicial = rand() % 8;
         columnaInicial = rand() % 8;
+        comb+=1;
+        if(comb>15000)
+        {
 
-
+            numAux1 = 1;
+        }
         if(tablero[filaInicial][columnaInicial]=='p'||tablero[filaInicial][columnaInicial]=='t'||tablero[filaInicial][columnaInicial]=='c'||
            tablero[filaInicial][columnaInicial]=='a'||tablero[filaInicial][columnaInicial]=='r'||tablero[filaInicial][columnaInicial]=='q')
         {
@@ -1577,8 +1581,142 @@ void movimientoAI(int *tablero[8][8])
 
 
            }
-           if(tablero[filaInicial][columnaInicial]=='a')
+           if(tablero[filaInicial][columnaInicial]=='a')//movimientos del alfil al completo
            {
+                int incr = rand()%3;
+                int vert = rand()%2;
+                int dir,vNum=0,i;
+                if(incr == 0)
+                {
+                    incr = 1;
+                }
+                if(vert == 0)//movimiento hacia arriba
+                {
+                    dir=rand()%2;
+                    if(dir == 0&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-i][columnaInicial+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial-incr][columnaInicial+incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial+incr]='a';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial-incr][columnaInicial+incr]<91&&tablero[filaInicial-incr][columnaInicial+incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial-incr][columnaInicial+incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial+incr]='a';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                    if(dir==1&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-i][columnaInicial-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial-incr][columnaInicial-incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial-incr]='a';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial-incr][columnaInicial-incr]<91&&tablero[filaInicial-incr][columnaInicial-incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial-incr][columnaInicial-incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial-incr]='a';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                }
+                if(vert == 1)//movimiento hacia debajo
+                {
+                    dir=rand()%2;
+                    if(dir == 0&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial+i][columnaInicial+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial+incr][columnaInicial+incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial+incr]='a';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial+incr][columnaInicial+incr]<91&&tablero[filaInicial+incr][columnaInicial+incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial+incr][columnaInicial+incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial+incr]='a';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                    if(dir==1&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial+i][columnaInicial-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial+incr][columnaInicial-incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial-incr]='a';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial+incr][columnaInicial-incr]<91&&tablero[filaInicial+incr][columnaInicial-incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial+incr][columnaInicial-incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial-incr]='a';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                }
+
+
+
 
 
            }
@@ -1600,7 +1738,14 @@ void movimientoAI(int *tablero[8][8])
         }
 
 
+
     }while(numAux1 != 1);
+
+    if(comb>=15000)
+    {
+
+        printf("No se han detectado movimientos posibles :(\n");
+    }
 
 
     return 0;

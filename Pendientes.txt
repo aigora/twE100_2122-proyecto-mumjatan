@@ -10,7 +10,7 @@ lista de cosas por implementar:
 -movimiento reina jugador 1
 -movimiento torre jugador AI(Hecho)
 -movimiento caballo jugador AI(Hecho)
--movimiento alfil jugador AI
+-movimiento alfil jugador AI(Hecho)
 -movimiento rey jugador AI
 -movimiento reina jugador AI
 
