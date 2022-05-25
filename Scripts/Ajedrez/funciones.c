@@ -308,6 +308,225 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
               }
        }
+       if(piezaI == 5)//movimiento del rey del jugador 0
+       {
+
+          if(columnaFinal == columnaInicial)//mov verticales
+          {
+
+              if(filaFinal - filaInicial == 1)
+              {
+                    if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                    {
+                        *num2 = 1;
+                        *num3 = 0;
+
+                    }else
+                    {
+                        printf("Espacio ocupado por %c\n",tablero[filaFinal-1][columnaFinal-1]);
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+              }
+              if(filaFinal-filaInicial == -1)
+              {
+                    if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                    {
+                        *num2 = 1;
+                        *num3 = 0;
+
+                    }else
+                    {
+                        printf("Espacio ocupado por %c\n",tablero[filaFinal-1][columnaFinal-1]);
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+              }
+
+          }
+          if(filaFinal == filaInicial)//mov horizontales
+          {
+
+              if(columnaFinal-columnaInicial==1) // hacia la derecha
+              {
+                    if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                    {
+                        *num2 = 1;
+                        *num3 = 0;
+
+                    }else
+                    {
+                        printf("Espacio ocupado por %c\n",tablero[filaFinal-1][columnaFinal-1]);
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+              }
+              if(columnaFinal-columnaInicial==-1)
+              {
+                    if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                    {
+                        *num2 = 1;
+                        *num3 = 0;
+
+                    }else
+                    {
+                        printf("Espacio ocupado por %c\n",tablero[filaFinal-1][columnaFinal-1]);
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+              }
+
+          }
+          if(columnaFinal != columnaInicial)
+          {
+              // Diagonal hacia abajo
+
+                    if(columnaInicial == 1 && columnaFinal == 2&&(filaFinal - filaInicial == 1))
+                    {
+                        if(tablero[filaFinal-1][columnaFinal-1]!=' ')
+                        {
+                            *num2 = 1;
+                            *num3 = 0;
+
+                        }else
+                        {
+                            printf("Movimiento no valido\n");
+                            *num2 = 1;
+                            *num3 = 1;
+
+                        }
+
+                    }
+                    if(columnaInicial == 8&&columnaFinal == 7&&(filaFinal - filaInicial == 1))
+                    {
+
+                         if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                        {
+                            *num2 = 1;
+                            *num3 = 0;
+
+                        }else
+                        {
+                            printf("Movimiento no valido\n");
+                            *num2 = 1;
+                            *num3 = 1;
+
+                        }
+                    }
+
+                    if(columnaInicial>1&&columnaInicial<8)
+                    {
+                        if(filaFinal -filaInicial == 1)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+
+                                *num2 = 1;
+                                *num3 = 0;
+
+
+                            }else
+                            {
+                            printf("Movimiento no valido\n");
+                            *num2 = 1;
+                            *num3 = 1;
+
+                            }
+
+                        }
+
+                    }
+
+            // Diagonal hacia arriba
+
+                    if(columnaInicial == 1 && columnaFinal == 2&&(filaFinal - filaInicial == -1))
+                    {
+                        printf("c\n");
+                        if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                        {
+
+                            *num2 = 1;
+                            *num3 = 0;
+
+                        }else
+                        {
+                            printf("Movimiento no valido\n");
+                            *num2 = 1;
+                            *num3 = 1;
+
+                        }
+
+                    }
+                    if(columnaInicial == 8&&columnaFinal == 7&&(filaFinal - filaInicial == -1))
+                    {
+
+                         if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                        {
+                            *num2 = 1;
+                            *num3 = 0;
+
+                        }else
+                        {
+                            printf("Movimiento no valido\n");
+                            *num2 = 1;
+                            *num3 = 1;
+
+                        }
+                    }
+
+                    if(columnaInicial>1&&columnaInicial<8)
+                    {
+                        if(filaFinal -filaInicial == -1)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+
+                                *num2 = 1;
+                                *num3 = 0;
+
+
+                            }else
+                            {
+                            printf("Movimiento no valido\n");
+                            *num2 = 1;
+                            *num3 = 1;
+
+                            }
+
+                        }
+
+                    }
+
+                    int vNum=0;
+                    if(tablero[filaFinal-1][columnaFinal-1]=='P'||tablero[filaFinal-1][columnaFinal-1]=='T'||tablero[filaFinal-1][columnaFinal-1]=='C'
+                    ||tablero[filaFinal-1][columnaFinal-1]=='A'||tablero[filaFinal-1][columnaFinal-1]=='R'||tablero[filaFinal-1][columnaFinal-1]=='Q')
+
+                        {
+                            if(vNum == 0)
+                            {
+                                vNum = 1;
+
+                            }
+
+                        }
+                        if(vNum == 0)
+                        {
+                            *num2 = 1;
+                            *num3 = 0;
+
+                        }else if(vNum == 1)
+                        {
+                            //printf("Movimiento no valido_c\n");
+                            *num2 = 1;
+                            *num3 = 1;
+
+                        }
+
+
+
+          }
+
+       }
         if(piezaI == 2)//Movimiento de torre jugador 0
        {
 
@@ -2309,5 +2528,4 @@ void NuevaPartidaAI()
 
 
 }
-
 
