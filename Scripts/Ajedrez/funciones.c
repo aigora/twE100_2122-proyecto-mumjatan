@@ -1,7 +1,8 @@
 #include "functions.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-void tableroShow(int *tablero[8][8],int turno)
+void tableroShow(int tablero[][8],int turno)
 {
     int fila,columna;
     printf("%d\n", turno);
@@ -35,9 +36,9 @@ void tableroShow(int *tablero[8][8],int turno)
 
 }
 
-void tableroStart(int *tablero[8][8])
+void tableroStart(int tablero[][8])
 {
-    int fila,columna;
+    int columna;
 
     tablero[0][0]='T';
     tablero[0][1]='C';
@@ -176,7 +177,7 @@ void cambioTurno(int *turno)
 
 }
 
-void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
+void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
 {
    if(turno == 0)//movimientod del jugador 0
    {
@@ -541,7 +542,7 @@ void verificarMovimiento(int *tablero[8][8],int piezaI,int *num2,int *num3,int f
    }
 }
 
-void posicion(mCoordenadas *mCoord,int *tablero[8][8],int turno,int coordenada,int AI)
+void posicion(mCoordenadas *mCoord,int tablero[8][8],int turno,int coordenada,int AI)
 {
     if(coordenada == 1)
     {
@@ -670,9 +671,9 @@ void Nuevapartida()
     int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
     printf("%d\n", turno);
     int tablero[8][8];
-    int fila=0,columna=0;
-    tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(&tablero,turno);//muestra el tablero en pantalla
+    int fila=0;
+    tableroStart(tablero);//inicializa el tablero con cada pieza en su posicion
+    tableroShow(tablero,turno);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -688,7 +689,7 @@ void Nuevapartida()
 
         do
         {
-            posicion(&coordenadas,&tablero,turno,1,0);
+            posicion(&coordenadas,tablero,turno,1,0);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -709,8 +710,8 @@ void Nuevapartida()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,&tablero,turno,2,0);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
+                posicion(&coordenadas,tablero,turno,2,0);
+            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
 
             }else{
             num2 = 1;
@@ -728,7 +729,7 @@ void Nuevapartida()
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             cambioTurno(&turno);
-            tableroShow(&tablero,turno);
+            tableroShow(tablero,turno);
         }
 
 
@@ -743,44 +744,7 @@ void Nuevapartida()
 
 }
 
-void menuNormas()
-{
-    int numA,numAux = 0;
 
-    while(numAux != 1)
-    {
-        printf("1:Movimiento\n2:Normas Basicas\n3:Como funciona \n4:Volver Menu Principal\n");
-        scanf("%d",&numA);
-        while(getchar() != '\n');
-
-    switch(numA)
-    {
-        case 1:
-            menuMovimiento();
-        break;
-
-        case 2:
-            menuNormasBasicas();
-        break;
-
-        case 3:
-            menuFuncionamiento();
-        case 4:
-            system("cls");
-            numAux = 1;
-        break;
-
-        default:
-            system("cls");
-        break;
-
-    }
-
-    }
-
-
-
-}
 
 void menuMovimiento()
 {
@@ -903,8 +867,45 @@ system("cls");
 
 
 }
+void menuNormas()
+{
+    int numA,numAux = 0;
 
-void guardarPartida(int *tablero[8][8],int turno)
+    while(numAux != 1)
+    {
+        printf("1:Movimiento\n2:Normas Basicas\n3:Como funciona \n4:Volver Menu Principal\n");
+        scanf("%d",&numA);
+        while(getchar() != '\n');
+
+    switch(numA)
+    {
+        case 1:
+            menuMovimiento();
+        break;
+
+        case 2:
+            menuNormasBasicas();
+        break;
+
+        case 3:
+            menuFuncionamiento();
+        case 4:
+            system("cls");
+            numAux = 1;
+        break;
+
+        default:
+            system("cls");
+        break;
+
+    }
+
+    }
+
+
+
+}
+void guardarPartida(int tablero[8][8],int turno)
 {
     int guardado[8][8];
     int fila, columna;
@@ -922,7 +923,7 @@ void guardarPartida(int *tablero[8][8],int turno)
     if (pf == NULL||pt==NULL)
     {
       printf("Error al abrir el fichero.\n");
-      return -1;
+
     }
     else
     {
@@ -935,24 +936,24 @@ void guardarPartida(int *tablero[8][8],int turno)
                  fprintf(pf,"\n");
                 }
 
-        fprintf(pt,"%d,",&turno);
+        fprintf(pt,"%d,",turno);
         fclose(pt);
       fclose(pf);
-      return 0;
+
     }
 
 }
 
-void tableroLoad(int *tablero[8][8],int *turno)
+void tableroLoad(int tablero[8][8],int *turno)
 {
-    int fila,columna,vector1[8],vector2[8],vector3[8],vector4[8],vector5[8],vector6[8],vector7[8],vector8[8],i=0;
+    int vector1[8],vector2[8],vector3[8],vector4[8],vector5[8],vector6[8],vector7[8],vector8[8],i=0;
     FILE *pf,*pt;
     pf=fopen("guardado.txt","r");
      pt = fopen("turnoGuardado.txt","r");
      if(pf==NULL||pt==NULL)
      {
          printf("Error 404\n");
-         return -1;
+
      }else
      {
          fscanf(pt,"%d,",turno);
@@ -996,9 +997,9 @@ void cargarPartida()
 {
      int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
     int tablero[8][8];
-    int fila=0,columna=0;
-    tableroLoad(&tablero,&turno);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(&tablero,turno);//muestra el tablero en pantalla
+    int fila=0;
+    tableroLoad(tablero,&turno);//inicializa el tablero con cada pieza en su posicion
+    tableroShow(tablero,turno);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -1012,7 +1013,7 @@ void cargarPartida()
 
         do
         {
-            posicion(&coordenadas,&tablero,turno,1,0);
+            posicion(&coordenadas,tablero,turno,1,0);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -1033,8 +1034,8 @@ void cargarPartida()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,&tablero,turno,2,0);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
+                posicion(&coordenadas,tablero,turno,2,0);
+            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
 
             }else{
             num2 = 1;
@@ -1052,7 +1053,7 @@ void cargarPartida()
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             cambioTurno(&turno);
-            tableroShow(&tablero,turno);
+            tableroShow(tablero,turno);
         }
 
 
@@ -1064,84 +1065,9 @@ void cargarPartida()
     system("cls");
 
 }
-
-void NuevaPartidaAI()
+void movimientoAI(int tablero[8][8])//hay un limite de 15000 posibles calculos de posiciones aleatorias.
 {
-    int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
-    int tablero[8][8];
-    int fila=0,columna=0;
-    tableroStart(&tablero);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(&tablero,turno);//muestra el tablero en pantalla
-
-    while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
-    {
-
-        char aux;
-        int num = 0;
-        int num2 = 0;
-        int num3 = 0;
-        int piezaI;
-        mCoordenadas coordenadas;
-
-        do
-        {
-            posicion(&coordenadas,&tablero,turno,1,1);
-            fila = coordenadas.filaInicial;
-            if(fila != 9)
-            {
-                 aux = tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1];
-            reconocerPieza(tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1],turno,&num,&piezaI);
-            //printf("%c.\n",tablero[filaInicial - 1][columnaInicial - 1]);
-
-            }else{
-
-            num = 1;
-            }
-
-
-
-
-        }while(num != 1);
-        do
-        {
-            if(fila != 9)
-            {
-                posicion(&coordenadas,&tablero,turno,2,1);
-            verificarMovimiento(&tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
-
-            }else{
-            num2 = 1;
-            num3 = 1;
-            }
-
-
-
-
-        }while(num2 != 1);
-
-        if(num3 == 0)
-        {
-            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
-            tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
-            system("cls");
-            movimientoAI(&tablero);
-            tableroShow(&tablero,turno);
-        }
-
-
-
-
-
-    }
-
-    system("cls");
-
-
-}
-
-void movimientoAI(int *tablero[8][8])//hay un limite de 15000 posibles calculos de posiciones aleatorias.
-{
-    int filaInicial=-1,columnaInicial=-1,numAux1=0,i,comb=0;
+    int filaInicial=-1,columnaInicial=-1,numAux1=0,comb=0;
     do
     {
         filaInicial = rand() % 8;
@@ -1160,7 +1086,7 @@ void movimientoAI(int *tablero[8][8])//hay un limite de 15000 posibles calculos 
            {
                if(tablero[filaInicial-1][columnaInicial]==' ')
                {
-                   char aux;
+
 
                     tablero[filaInicial-1][columnaInicial] = 'p';
                     tablero[filaInicial][columnaInicial]=' ';
@@ -1733,11 +1659,11 @@ void movimientoAI(int *tablero[8][8])//hay un limite de 15000 posibles calculos 
 
            }
 
-        }else
-        {
-
-
         }
+
+
+
+
 
 
 
@@ -1750,6 +1676,81 @@ void movimientoAI(int *tablero[8][8])//hay un limite de 15000 posibles calculos 
     }
 
 
-    return 0;
+
 
 }
+void NuevaPartidaAI()
+{
+    int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
+    int tablero[8][8];
+    int fila=0;
+    tableroStart(tablero);//inicializa el tablero con cada pieza en su posicion
+    tableroShow(tablero,turno);//muestra el tablero en pantalla
+
+    while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
+    {
+
+        char aux;
+        int num = 0;
+        int num2 = 0;
+        int num3 = 0;
+        int piezaI;
+        mCoordenadas coordenadas;
+
+        do
+        {
+            posicion(&coordenadas,tablero,turno,1,1);
+            fila = coordenadas.filaInicial;
+            if(fila != 9)
+            {
+                 aux = tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1];
+            reconocerPieza(tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1],turno,&num,&piezaI);
+            //printf("%c.\n",tablero[filaInicial - 1][columnaInicial - 1]);
+
+            }else{
+
+            num = 1;
+            }
+
+
+
+
+        }while(num != 1);
+        do
+        {
+            if(fila != 9)
+            {
+                posicion(&coordenadas,tablero,turno,2,1);
+            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
+
+            }else{
+            num2 = 1;
+            num3 = 1;
+            }
+
+
+
+
+        }while(num2 != 1);
+
+        if(num3 == 0)
+        {
+            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
+            tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
+            system("cls");
+            movimientoAI(tablero);
+            tableroShow(tablero,turno);
+        }
+
+
+
+
+
+    }
+
+    system("cls");
+
+
+}
+
+

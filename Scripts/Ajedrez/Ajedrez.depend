@@ -31,11 +31,12 @@
 
 1653304106 c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\funciones.h
 
-1653477063 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\funciones.c
+1653487629 source:c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\funciones.c
 	"functions.h"
 	<stdio.h>
+	<stdlib.h>
 
-1653473928 c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\functions.h
+1653487193 c:\users\햚gel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\functions.h
 
 1653474619 source:c:\users\luis\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\tablero.c
 	<stdio.h>
