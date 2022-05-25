@@ -1,18 +1,18 @@
 lista de cosas por implementar:
 -movimiento caballo jugador 0
--movimiento alfil jugador 0
+-movimiento alfil jugador 0 (Hecho)
 -movimiento rey jugador 0
 -movimiento reina jugador 0
--movimiento torre jugador 1(copiar el ya exisyente en 0 y ajustarlo)
+-movimiento torre jugador 1 (Hecho)
 -movimiento caballo jugador 1
 -movimiento alfil jugador 1
 -movimiento rey jugador 1
 -movimiento reina jugador 1
--movimiento torre jugador AI(Hecho)
--movimiento caballo jugador AI(Hecho)
--movimiento alfil jugador AI(Hecho)
--movimiento rey jugador AI
--movimiento reina jugador AI
+-movimiento torre jugador AI (Hecho)
+-movimiento caballo jugador AI (Hecho)
+-movimiento alfil jugador AI (Hecho)
+-movimiento rey jugador AI (Hecho)
+-movimiento reina jugador AI (Hecho)
 
 lista de bugs por resolver:
 
