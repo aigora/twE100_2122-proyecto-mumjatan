@@ -6,11 +6,12 @@ int main()
 
 
     int menuNum,numAux=0;
-
+    animacion_bienvenida();
 do
 {
 
-        animacion_bienvenida();
+
+        printf("Indique que desea hacer:\n\n");
         printf("1:Nueva partida\n\n2:Nueva partida contra AI\n\n3:Cargar ultima partida\n\n4:Menu de normas\n\n5:Salir\n");
 
 

@@ -11,17 +11,20 @@
 	<stdio.h>
 	"funciones.h"
 
-1653272116 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\funciones.c
-	"funciones.h"
+1653568833 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\funciones.c
+	"functions.h"
 	<stdio.h>
+	<stdlib.h>
+	<math.h>
+	<time.h>
 
 1653271706 c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\funciones.h
 
 1653271706 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\main.c
 
-1653271706 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\tablero.c
+1653568879 source:c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\tablero.c
 	<stdio.h>
-	"funciones.h"
+	"functions.h"
 
 1653304106 source:c:\users\Ángel\documents\github\twe100_2122-proyecto-mumjatan\scripts\ajedrez\main.c
 
@@ -50,4 +53,6 @@
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
+
+1653559297 c:\users\julia\onedrive - universidad politécnica de madrid\escritorio\twe100_2122-proyecto-mumjatan\scripts\ajedrez\functions.h
 

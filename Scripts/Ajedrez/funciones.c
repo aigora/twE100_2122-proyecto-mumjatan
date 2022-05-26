@@ -2773,11 +2773,11 @@ void animacion_bienvenida()
         {
             c=fgetc(p_file);
             printf("%c",c);
-            delay(0.005);
+            delay(0.85);
         }
         fclose(p_file);
     }
-    delay (2);
+    delay (2.5);
     fclose(p_file);
     system("cls");
 }
@@ -2800,7 +2800,7 @@ void animacion_ganador0()
         {
             c=fgetc(p_file);
             printf("%c",c);
-            delay(0.005);
+            delay(0.85);
         }
         fclose(p_file);
     }
@@ -2827,7 +2827,7 @@ void animacion_ganador1()
         {
             c=fgetc(p_file);
             printf("%c",c);
-            delay(0.005);
+            delay(0.85);
         }
         fclose(p_file);
     }
@@ -2854,11 +2854,11 @@ void animacion_despedida()
         {
             c=fgetc(p_file);
             printf("%c",c);
-            delay(0.005);
+            delay(0.85);
         }
         fclose(p_file);
     }
-    delay (2);
+    delay (5);
     fclose(p_file);
     system("cls");
 }

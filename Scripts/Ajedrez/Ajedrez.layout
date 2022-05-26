@@ -4,36 +4,36 @@
 	<ActiveTarget name="Debug" />
 	<File name="tablero.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="381" topLine="3" />
+			<Cursor1 position="175" topLine="43" />
 		</Cursor>
 	</File>
 	<File name="funciones.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4165" topLine="14" />
+			<Cursor1 position="91294" topLine="675" />
 		</Cursor>
 		<Folding>
-			<Collapse line="6" />
-			<Collapse line="66" />
-			<Collapse line="103" />
-			<Collapse line="193" />
+			<Collapse line="7" />
+			<Collapse line="65" />
+			<Collapse line="95" />
+			<Collapse line="190" />
 			<Collapse line="213" />
-			<Collapse line="311" />
+			<Collapse line="292" />
 			<Collapse line="641" />
-			<Collapse line="900" />
-			<Collapse line="1023" />
+			<Collapse line="869" />
+			<Collapse line="1017" />
 			<Collapse line="1104" />
-			<Collapse line="1143" />
-			<Collapse line="1184" />
-			<Collapse line="1225" />
-			<Collapse line="1263" />
-			<Collapse line="1302" />
-			<Collapse line="1351" />
-			<Collapse line="1440" />
-			<Collapse line="1456" />
-			<Collapse line="1656" />
-			<Collapse line="1867" />
-			<Collapse line="2006" />
-			<Collapse line="2078" />
+			<Collapse line="1142" />
+			<Collapse line="1182" />
+			<Collapse line="1211" />
+			<Collapse line="1262" />
+			<Collapse line="1299" />
+			<Collapse line="1341" />
+			<Collapse line="1349" />
+			<Collapse line="1437" />
+			<Collapse line="1626" />
+			<Collapse line="1865" />
+			<Collapse line="2004" />
+			<Collapse line="2076" />
 		</Folding>
 	</File>
 </CodeBlocks_layout_file>
