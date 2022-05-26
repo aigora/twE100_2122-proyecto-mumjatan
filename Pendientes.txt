@@ -1,11 +1,11 @@
 lista de cosas por implementar:
 -movimiento caballo jugador 0
 -movimiento alfil jugador 0 (Hecho)
--movimiento rey jugador 0
+-movimiento rey jugador 0(hecho)
 -movimiento reina jugador 0
 -movimiento torre jugador 1 (Hecho)
 -movimiento caballo jugador 1
--movimiento alfil jugador 1
+-movimiento alfil jugador 1(Hecho)
 -movimiento rey jugador 1
 -movimiento reina jugador 1
 -movimiento torre jugador AI (Hecho)

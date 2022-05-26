@@ -689,17 +689,20 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
             }
             }
-        if(piezaI==3)//movimientos del alfil turno 0
+        if(piezaI==4)//movimientos del alfil turno 0
         {
-           if(abs(filaFinal-filaInicial)-abs(columnaFinal-columnaInicial)!=0)
+
+           if(fabs(filaFinal-filaInicial)-fabs(columnaFinal-columnaInicial)!=0)
            {
+
                printf("Movimiento no valido\n");
                *num2 = 1;
                *num3 = 1;
            }
            else
            {
-                int incr = abs(filaFinal-filaInicial);
+                int incr=0;
+
                 int vNum=0,i;
                 int vert, dir;
 
@@ -723,127 +726,160 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
                 if(vert == 0)//movimiento hacia arriba
                 {
-
-                    if(dir == 0&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    if(dir==0)//hacia arriba a la derecha
                     {
+                        incr = filaInicial-filaFinal;
+
                         for(i=1;i<incr;i++)
                         {
-                            if(tablero[filaInicial-i][columnaInicial+i]!=' ')
+
+                            if(tablero[filaInicial-1-i][columnaInicial-1+i]!=' ')
                             {
+
                                 vNum = 1;
                                 break;
                             }
                         }
-
                         if(vNum == 0)
                         {
-                            if(tablero[filaInicial-incr][columnaInicial+incr]==' ')
+                             if(tablero[filaFinal-1][columnaFinal-1]==' ')
                             {
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial-incr][columnaInicial+incr]='a';
-
-
-                            }else if(tablero[filaInicial-incr][columnaInicial+incr]<91&&tablero[filaInicial-incr][columnaInicial+incr]>64)
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]>96&&tablero[filaFinal-1][columnaFinal-1]<123)
                             {
-                                printf("%c\n",tablero[filaInicial-incr][columnaInicial+incr]);
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial-incr][columnaInicial+incr]='a';
-
-
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            {
+                                *num2 = 1;
+                                *num3 = 1;
                             }
                         }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
+                        }
+
                     }
-                    if(dir==1&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    if(dir==1)//hacia arriba a la izquierda
                     {
+                        incr = filaInicial-filaFinal;
+
                         for(i=1;i<incr;i++)
                         {
-                            if(tablero[filaInicial-i][columnaInicial-i]!=' ')
+
+                            if(tablero[filaInicial-1-i][columnaInicial-1-i]!=' ')
                             {
+
                                 vNum = 1;
                                 break;
                             }
                         }
-
                         if(vNum == 0)
                         {
-                            if(tablero[filaInicial-incr][columnaInicial-incr]==' ')
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
                             {
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial-incr][columnaInicial-incr]='a';
-
-
-                            }else if(tablero[filaInicial-incr][columnaInicial-incr]<91&&tablero[filaInicial-incr][columnaInicial-incr]>64)
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]>96&&tablero[filaFinal-1][columnaFinal-1]<123)
                             {
-                                printf("%c\n",tablero[filaInicial-incr][columnaInicial-incr]);
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial-incr][columnaInicial-incr]='a';
-
-
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            {
+                                *num2 = 1;
+                                *num3 = 1;
                             }
+
+                        }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
                         }
                     }
                 }
                 if(vert == 1)//movimiento hacia debajo
                 {
-
-                    if(dir == 0&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    if(dir==0)//abajo a la derecha
                     {
+                        incr = filaFinal-filaInicial;
+
                         for(i=1;i<incr;i++)
                         {
-                            if(tablero[filaInicial+i][columnaInicial+i]!=' ')
+
+                            if(tablero[filaInicial-1+i][columnaInicial-1+i]!=' ')
                             {
+
                                 vNum = 1;
                                 break;
                             }
                         }
-
                         if(vNum == 0)
                         {
-                            if(tablero[filaInicial+incr][columnaInicial+incr]==' ')
+                             if(tablero[filaFinal-1][columnaFinal-1]==' ')
                             {
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial+incr][columnaInicial+incr]='a';
-
-
-                            }else if(tablero[filaInicial+incr][columnaInicial+incr]<91&&tablero[filaInicial+incr][columnaInicial+incr]>64)
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]>96&&tablero[filaFinal-1][columnaFinal-1]<123)
                             {
-                                printf("%c\n",tablero[filaInicial+incr][columnaInicial+incr]);
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial+incr][columnaInicial+incr]='a';
-
-
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            {
+                                *num2 = 1;
+                                *num3 = 1;
                             }
                         }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
+                        }
                     }
-                    if(dir==1&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    if(dir==1)//abajo a la izquierda
                     {
+                        incr = filaFinal-filaInicial;
+
                         for(i=1;i<incr;i++)
                         {
-                            if(tablero[filaInicial+i][columnaInicial-i]!=' ')
+
+                            if(tablero[filaInicial-1+i][columnaInicial-1-i]!=' ')
                             {
+
                                 vNum = 1;
                                 break;
                             }
                         }
-
                         if(vNum == 0)
                         {
-                            if(tablero[filaInicial+incr][columnaInicial-incr]==' ')
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
                             {
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial+incr][columnaInicial-incr]='a';
-
-
-                            }else if(tablero[filaInicial+incr][columnaInicial-incr]<91&&tablero[filaInicial+incr][columnaInicial-incr]>64)
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]>96&&tablero[filaFinal-1][columnaFinal-1]<123)
                             {
-                                printf("%c\n",tablero[filaInicial+incr][columnaInicial-incr]);
-                                tablero[filaInicial][columnaInicial]=' ';
-                                tablero[filaInicial+incr][columnaInicial-incr]='a';
-
-
+                                *num2 = 1;
+                                *num3 = 0;
+                            }else
+                            {
+                                *num2 = 1;
+                                *num3 = 1;
                             }
                         }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
+                        }
                     }
+
                 }
 
 
@@ -852,7 +888,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
            }
            }
-
+            //codigo de luis
 
        }
 
@@ -1119,7 +1155,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
 
        }
-              if(piezaI == 5)//movimiento del rey del jugador 0
+    if(piezaI == 5)//movimiento del rey del jugador 1
        {
 
           if(columnaFinal == columnaInicial)//mov verticales
@@ -1335,6 +1371,13 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 }
 
        }
+    if(piezaI==4)//movimientos del alfil turno 1
+        {
+
+
+           }
+
+
    }
 }
 
