@@ -1,10 +1,5 @@
 lista de cosas por implementar:
 
--movimiento reina jugador 0
-
--movimiento caballo jugador 1
-
--movimiento rey jugador 1
 -movimiento reina jugador 1
 -movimiento reina jugador AI (Hecho)(falta como alfil)
 

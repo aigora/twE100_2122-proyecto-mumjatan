@@ -1074,6 +1074,334 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 printf("Movimiento no valido\n");
             }
        }
+       if(piezaI==6)//movimiento de reina jugador 0
+       {
+           int a=fabs(filaFinal-filaInicial),b=fabs(columnaFinal-columnaInicial),vNum=0,i;
+            if(filaFinal==filaInicial)//movimientos horizontales
+            {
+                if(columnaFinal>columnaInicial)//movimiento a la derecha
+                {
+
+                    for(i=(columnaInicial);i<(columnaFinal-1);i++)
+                    {
+
+
+                        if(tablero[filaInicial-1][i]!=' ')
+                        {
+                            vNum=1;
+                            break;
+                        }
+
+                    }
+
+                   if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            {
+                                *num2=1;
+                                *num3=1;
+                            }
+
+                        }
+                        if(vNum == 1)
+                        {
+                            printf("Movimiento no valido\n");
+                            *num2=1;
+                            *num3=1;
+                        }
+                }
+                if(columnaFinal<columnaInicial)//movimiento a la izquierda
+                {
+
+                    for(i=(columnaFinal);i<(columnaInicial-1);i++)
+                    {
+
+
+                        if(tablero[filaInicial-1][i]!=' ')
+                        {
+                            vNum=1;
+                            break;
+                        }
+
+                    }
+
+                   if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            {
+                                *num2=1;
+                                *num3=1;
+                            }
+
+                        }
+                        if(vNum == 1)
+                        {
+
+                            *num2=1;
+                            *num3=1;
+                        }
+                }
+                if(*num3 == 1)
+                {
+                    printf("Movimiento no valido\n");
+                }
+            }
+            if(columnaFinal==columnaInicial)//movimientos verticales
+            {
+                if(filaFinal>filaInicial)//movimiento hacia abajo
+                {
+                     for(i=(filaInicial);i<(filaFinal-1);i++)
+                    {
+
+
+                        if(tablero[i][columnaFinal-1]!=' ')
+                        {
+                            vNum=1;
+                            break;
+                        }
+
+                    }
+
+                   if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            {
+                                *num2=1;
+                                *num3=1;
+                            }
+
+                        }
+                        if(vNum == 1)
+                        {
+
+                            *num2=1;
+                            *num3=1;
+                        }
+                }
+                if(filaFinal<filaInicial)//movimiento hacia arriba
+                {
+                    for(i=(filaInicial-2);i>(filaFinal-1);i--)
+                    {
+
+
+                        if(tablero[i][columnaFinal-1]!=' ')
+                        {
+                            vNum=1;
+                            break;
+                        }
+
+                    }
+
+                   if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                                *num2=1;
+                                *num3=0;
+                            }else
+                            {
+                                *num2=1;
+                                *num3=1;
+                            }
+
+                        }
+                        if(vNum == 1)
+                        {
+
+                            *num2=1;
+                            *num3=1;
+                        }
+                }
+                if(*num3 == 1)
+                {
+                    printf("Movimiento no valido\n");
+                }
+            }
+            if(a-b==0)//movimientos como alfil
+            {
+                int incr=0;
+                if(filaFinal>filaInicial)//movimiento hacia abajo
+                {
+                    if(columnaFinal>columnaInicial)//movimiento hacia la derecha
+                    {
+                        incr = filaFinal-filaInicial;
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-1+i][columnaInicial-1+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else
+                            {
+                            *num2 = 1;
+                            *num3 = 1;
+                            }
+                        }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
+                        }
+                    }
+                    if(columnaFinal<columnaInicial)//movimiento hacia la izquierda
+                    {
+                        incr = filaFinal-filaInicial;
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-1+i][columnaInicial-1-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else
+                            {
+                            *num2 = 1;
+                            *num3 = 1;
+                            }
+                        }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
+                        }
+                    }
+                }
+                if(filaFinal<filaInicial)//movimiento hacia arriba
+                {
+                    if(columnaFinal>columnaInicial)//movimiento hacia la derecha
+                    {
+                         incr = filaInicial-filaFinal;
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-1-i][columnaInicial-1+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else
+                            {
+                            *num2 = 1;
+                            *num3 = 1;
+                            }
+                        }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
+                        }
+                    }
+                    if(columnaFinal<columnaInicial)//movimiento hacia la izquierda
+                    {
+                         incr = filaInicial-filaFinal;
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-1-i][columnaInicial-1-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaFinal-1][columnaFinal-1]==' ')
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else if(tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            {
+                            *num2 = 1;
+                            *num3 = 0;
+                            }else
+                            {
+                            *num2 = 1;
+                            *num3 = 1;
+                            }
+                        }
+                        if(vNum == 1)
+                        {
+                            *num2 = 1;
+                            *num3 = 1;
+                        }
+                    }
+                }
+
+                if(*num3 == 1)
+                {
+                    printf("Movimiento no valido\n");
+                }
+            }
+
+
+
+
+
+       }
 
 
 
@@ -1754,7 +2082,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
 
            }
-        if(piezaI == 3)//movimiento de caballo jugador 0
+    if(piezaI == 3)//movimiento de caballo jugador 1
            {
                 if(filaInicial>filaFinal)//movimiento hacia arriba
                 {
@@ -1940,6 +2268,15 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 printf("Movimiento no valido\n");
             }
        }
+    if(piezaI == 6)//movimiento de reina jugador 1
+    {
+
+
+
+
+
+
+    }
 
 
    }
