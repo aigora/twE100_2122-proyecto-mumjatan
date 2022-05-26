@@ -212,7 +212,7 @@ void cambioTurno(int *turno)
 }
 void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
 {
-
+   int piezaC, error=0;
    if(turno == 0)//movimientod del jugador 0
    {
 
@@ -249,6 +249,28 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                         *num2 = 1;
                         *num3 = 1;
                     }
+              }
+              if(filaFinal==8)//coronar jugador 0
+              {
+                printf("A que pieza quiere coronar?\nReina(Q)\nTorre(T)\nAlfil(A)\nCaballo(C)\n");
+                scanf("%d", &piezaC);
+                switch(piezaC)
+                {
+                    case 'Q':
+                    piezaI=6;
+                    case 'T':
+                    piezaI=2;
+                    case 'A':
+                    piezaI=4;
+                    case 'C':
+                    piezaI=3;
+                    default:
+                        {
+                          printf("Error, pieza no reconocida");
+                          error=1;
+                        }
+
+                }
               }
 
           }
@@ -4132,4 +4154,5 @@ void animacion_despedida()
     fclose(p_file);
     system("cls");
 }
+
 
