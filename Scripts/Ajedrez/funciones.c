@@ -1754,6 +1754,192 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
 
            }
+        if(piezaI == 3)//movimiento de caballo jugador 0
+           {
+                if(filaInicial>filaFinal)//movimiento hacia arriba
+                {
+                    if(filaInicial-filaFinal==1&&fabs(columnaFinal-columnaInicial)==2)//caso 1
+                    {
+                        if(columnaInicial>columnaFinal)//se mueve a la izquierda
+                        {
+                           if(tablero[filaInicial-2][columnaInicial-3]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial-2][columnaInicial-3]<91&&tablero[filaInicial-2][columnaInicial-3]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                        if(columnaInicial<columnaFinal)//se mueve a la derecha
+                        {
+                            if(tablero[filaInicial-2][columnaInicial+1]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial-2][columnaInicial+1]<91&&tablero[filaInicial-2][columnaInicial+1]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                    }else
+                    {
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+                    if(filaInicial-filaFinal==2&&fabs(columnaFinal-columnaInicial)==1)//caso 2
+                    {
+                        if(columnaInicial>columnaFinal)//se mueve a la izquierda
+                        {
+                           if(tablero[filaInicial-3][columnaInicial-2]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial-3][columnaInicial-2]<91&&tablero[filaInicial-3][columnaInicial-2]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                        if(columnaInicial<columnaFinal)//se mueve a la derecha
+                        {
+                            if(tablero[filaInicial-3][columnaInicial]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial-3][columnaInicial]<91&&tablero[filaInicial-3][columnaInicial]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                    }else
+                    {
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+                }else
+                    {
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+                if(filaInicial<filaFinal)//movimiento hacia abajo
+                {
+                    if(filaInicial-filaFinal==-1&&fabs(columnaFinal-columnaInicial)==2)//caso 1
+                    {
+                        if(columnaInicial>columnaFinal)//se mueve a la izquierda
+                        {
+                           if(tablero[filaInicial][columnaInicial-3]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial][columnaInicial-3]<91&&tablero[filaInicial][columnaInicial-3]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                        if(columnaInicial<columnaFinal)//se mueve a la derecha
+                        {
+                            if(tablero[filaInicial][columnaInicial+1]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial][columnaInicial+1]<91&&tablero[filaInicial][columnaInicial+1]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                    }else
+                    {
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+                    if(filaInicial-filaFinal==-2&&fabs(columnaFinal-columnaInicial)==1)//caso 2
+                    {
+                        if(columnaInicial>columnaFinal)//se mueve a la izquierda
+                        {
+                           if(tablero[filaInicial+1][columnaInicial-2]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial+1][columnaInicial-2]<91&&tablero[filaInicial+1][columnaInicial-2]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                        if(columnaInicial<columnaFinal)//se mueve a la derecha
+                        {
+                            if(tablero[filaInicial+1][columnaInicial]==' ')
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else
+                           if(tablero[filaInicial+1][columnaInicial]<91&&tablero[filaInicial+1][columnaInicial]>64)
+                           {
+                               *num2 = 1;
+                               *num3 = 0;
+                           }else{
+
+                           *num2 = 1;
+                           *num3 = 1;
+                           }
+                        }
+                    }else
+                    {
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+                }else
+                    {
+                        *num2 = 1;
+                        *num3 = 1;
+                    }
+
+            if(*num3 == 1)
+            {
+                printf("Movimiento no valido\n");
+            }
+       }
 
 
    }
