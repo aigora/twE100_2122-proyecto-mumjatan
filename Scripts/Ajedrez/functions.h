@@ -18,7 +18,9 @@ void guardarPartida(int tablero[8][8],int turno);
 void Nuevapartida();
 void cargarPartida();
 void movimientoAI(int tablero[][8]);
-
-
-
+void delay (int secs);
+void animacion_bienvenida();
+void animacion_ganador0();
+void animacion_ganador1();
+void animacion_despedida();
 

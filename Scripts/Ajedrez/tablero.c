@@ -10,7 +10,7 @@ int main()
 do
 {
 
-        printf("Bienvenido!!\n\n");
+        animacion_bienvenida();
         printf("1:Nueva partida\n\n2:Nueva partida contra AI\n\n3:Cargar ultima partida\n\n4:Menu de normas\n\n5:Salir\n");
 
 
@@ -44,6 +44,7 @@ do
 
         case 5://Salir
         numAux = 1;
+        animacion_despedida();
         break;
 
         default:
@@ -61,6 +62,7 @@ do
 
 return 0;
 }
+
 
 
 

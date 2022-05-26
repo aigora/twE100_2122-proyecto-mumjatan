@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 void tableroShow(int tablero[][8],int turno)
 {
@@ -58,7 +59,13 @@ void tableroShow(int tablero[][8],int turno)
       if(piezasBlancas==0||piezasNegras==0)
     {
 
-        printf("El juego ha terminado.\n");
+        if (piezasBlancas==0) // gana jugador 0
+        {
+            animacion_ganador0();
+        } else
+        {
+            animacion_ganador1(); //gana jugador 1
+        }
     }
 
 }
@@ -203,7 +210,6 @@ void cambioTurno(int *turno)
     }
 
 }
-
 void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
 {
 
@@ -1534,8 +1540,6 @@ void Nuevapartida()
 
 }
 
-
-
 void menuMovimiento()
 {
 
@@ -1657,6 +1661,7 @@ system("cls");
 
 
 }
+
 void menuNormas()
 {
     int numA,numAux = 0;
@@ -1695,6 +1700,7 @@ void menuNormas()
 
 
 }
+
 void guardarPartida(int tablero[8][8],int turno)
 {
     int guardado[8][8];
@@ -1855,6 +1861,7 @@ void cargarPartida()
     system("cls");
 
 }
+
 void movimientoAI(int tablero[8][8])//hay un limite de 150000 posibles calculos de posiciones aleatorias.
 {
     int filaInicial=-1,columnaInicial=-1,numAux1=0,comb=0;
@@ -2669,8 +2676,6 @@ void movimientoAI(int tablero[8][8])//hay un limite de 150000 posibles calculos 
 
 }
 
-
-
 void NuevaPartidaAI()
 {
     int turno=0;//turno 0 mueve jugador 1(mayusculas),turno 1 mueve jugador 2(minusculas)
@@ -2743,5 +2748,118 @@ void NuevaPartidaAI()
     system("cls");
 
 
+}
+
+void delay(int secs)
+{
+for(int i = (time(NULL) + secs); time(NULL) != i; time(NULL));
+}
+
+void animacion_bienvenida()
+{
+    FILE *p_file;
+    char c;
+
+    p_file=fopen ("mumjatan.txt","r");
+
+    if (p_file==NULL) // compruebo que se abre el fichero
+    {
+        printf("Error al abrir el archivo");
+    } else
+    {
+        system("cls");
+        fseek (p_file,0,SEEK_SET);
+        for (c=0;c!=EOF;)
+        {
+            c=fgetc(p_file);
+            printf("%c",c);
+            delay(0.005);
+        }
+        fclose(p_file);
+    }
+    delay (2);
+    fclose(p_file);
+    system("cls");
+}
+
+void animacion_ganador0()
+{
+    FILE *p_file;
+    char c;
+
+    p_file=fopen ("ganador_0.txt","r");
+
+    if (p_file==NULL) // compruebo que se abre el fichero
+    {
+        printf("Error al abrir el archivo");
+    } else
+    {
+        system("cls");
+        fseek (p_file,0,SEEK_SET);
+        for (c=0;c!=EOF;)
+        {
+            c=fgetc(p_file);
+            printf("%c",c);
+            delay(0.005);
+        }
+        fclose(p_file);
+    }
+    delay (2);
+    fclose(p_file);
+    system("cls");
+}
+
+void animacion_ganador1()
+{
+    FILE *p_file;
+    char c;
+
+    p_file=fopen ("ganador_1.txt","r");
+
+    if (p_file==NULL) // compruebo que se abre el fichero
+    {
+        printf("Error al abrir el archivo");
+    } else
+    {
+        system("cls");
+        fseek (p_file,0,SEEK_SET);
+        for (c=0;c!=EOF;)
+        {
+            c=fgetc(p_file);
+            printf("%c",c);
+            delay(0.005);
+        }
+        fclose(p_file);
+    }
+    delay (2);
+    fclose(p_file);
+    system("cls");
+}
+
+void animacion_despedida()
+{
+    FILE *p_file;
+    char c;
+
+    p_file=fopen ("hasta_luego.txt","r");
+
+    if (p_file==NULL) // compruebo que se abre el fichero
+    {
+        printf("Error al abrir el archivo");
+    } else
+    {
+        system("cls");
+        fseek (p_file,0,SEEK_SET);
+        for (c=0;c!=EOF;)
+        {
+            c=fgetc(p_file);
+            printf("%c",c);
+            delay(0.005);
+        }
+        fclose(p_file);
+    }
+    delay (2);
+    fclose(p_file);
+    system("cls");
 }
 
