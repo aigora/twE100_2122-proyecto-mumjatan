@@ -212,7 +212,8 @@ void cambioTurno(int *turno)
 }
 void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
 {
-   int piezaC, error=0;
+   char piezaC;
+   int error=0;
    if(turno == 0)//movimientod del jugador 0
    {
 
@@ -236,7 +237,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
                     }
               }
-              if((filaFinal - filaInicial == 1)&&(columnaFinal == columnaInicial))//movimiento recto
+              if((filaFinal - filaInicial == 1)&&(columnaFinal == columnaInicial)&&filaFinal!=8)//movimiento recto
               {
                     if(tablero[filaFinal -1][columnaFinal -1]==' ')
                     {
@@ -250,25 +251,57 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                         *num3 = 1;
                     }
               }
-              if(filaFinal==8)//coronar jugador 0
+              if(filaFinal==8&&tablero[filaFinal-1][columnaFinal-1]==' ')//coronar jugador 0
               {
-                printf("A que pieza quiere coronar?\nReina(Q)\nTorre(T)\nAlfil(A)\nCaballo(C)\n");
-                scanf("%d", &piezaC);
+                  int auxNum=0;
+                printf("A que pieza quiere coronar?\n1:Reina(Q)\n2:Torre(T)\n3:Alfil(A)\n4:Caballo(C)\n");
+
+
+                    printf("Seleccione\n");
+                scanf("%c", &piezaC);
                 switch(piezaC)
                 {
                     case 'Q':
-                    piezaI=6;
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
                     case 'T':
-                    piezaI=2;
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
                     case 'A':
-                    piezaI=4;
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
                     case 'C':
-                    piezaI=3;
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+
                     default:
                         {
-                          printf("Error, pieza no reconocida");
-                          error=1;
+                            system("cls");
+                            tableroShow(tablero,turno);
+                            *num2=1;
+                            *num3=1;
                         }
+
+
+
+
+
+
+
+
+
 
                 }
               }
@@ -276,57 +309,75 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
           }
            if(columnaFinal != columnaInicial)//comer piezas
               {
-                    if(columnaInicial == 1 && columnaFinal == 2&&(filaFinal - filaInicial == 1))
-                    {
-                        printf("c\n");
-                        if(tablero[filaFinal-1][columnaFinal-1]!=' ')
-                        {
 
-                            *num2 = 1;
-                            *num3 = 0;
 
-                        }else
-                        {
-                            printf("Movimiento no valido\n");
-                            *num2 = 1;
-                            *num3 = 1;
-
-                        }
-
-                    }
-                    if(columnaInicial == 8&&columnaFinal == 7&&(filaFinal - filaInicial == 1))
-                    {
-
-                         if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
-                        {
-                            *num2 = 1;
-                            *num3 = 0;
-
-                        }else
-                        {
-                            printf("Movimiento no valido\n");
-                            *num2 = 1;
-                            *num3 = 1;
-
-                        }
-                    }
-
-                    if(columnaInicial>1&&columnaInicial<8)
+                    if(columnaInicial>=1&&columnaInicial<=8)
                     {
                         if(filaFinal -filaInicial == 1)
                         {
-                            if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96)
+                            if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96&&filaFinal!=8)
                             {
 
                                 *num2 = 1;
                                 *num3 = 0;
 
 
-                            }else
+                            }
+                            if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<123&&tablero[filaFinal-1][columnaFinal-1]>96&&filaFinal==8)
                             {
-                            printf("Movimiento no valido\n");
-                            *num2 = 1;
-                            *num3 = 1;
+
+                                 int auxNum=0;
+                printf("A que pieza quiere coronar?\n1:Reina(Q)\n2:Torre(T)\n3:Alfil(A)\n4:Caballo(C)\n");
+
+
+                    printf("Seleccione\n");
+                scanf("%c", &piezaC);
+                switch(piezaC)
+                {
+                    case 'Q':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 'T':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 'A':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 'C':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+
+                    default:
+                        {
+                            system("cls");
+                            tableroShow(tablero,turno);
+                            *num2=1;
+                            *num3=1;
+                        }
+
+
+
+
+
+
+
+
+
+
+                            }
+
 
                             }
 
@@ -950,10 +1001,6 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
                     if(filaInicial-filaFinal==2&&fabs(columnaFinal-columnaInicial)==1)//caso 2
                     {
@@ -991,16 +1038,8 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
-                }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
-                    }
+                }
                 if(filaInicial<filaFinal)//movimiento hacia abajo
                 {
                     if(filaInicial-filaFinal==-1&&fabs(columnaFinal-columnaInicial)==2)//caso 1
@@ -1039,10 +1078,6 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
                     if(filaInicial-filaFinal==-2&&fabs(columnaFinal-columnaInicial)==1)//caso 2
                     {
@@ -1080,16 +1115,8 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
-                }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
-                    }
+                }
 
             if(*num3 == 1)
             {
@@ -1452,7 +1479,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
 
                     }
               }
-              if((filaFinal - filaInicial == -1)&&(columnaFinal == columnaInicial))//movimiento recto
+              if((filaFinal - filaInicial == -1)&&(columnaFinal == columnaInicial)&&filaFinal!=1)//movimiento recto
               {
                     if(tablero[filaFinal -1][columnaFinal -1]==' ')
                     {
@@ -1466,63 +1493,136 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                         *num3 = 1;
                     }
               }
+              if(filaFinal==1&&tablero[filaFinal-1][columnaFinal-1]==' ')//coronar jugador 0
+              {
+                  int auxNum=0;
+                printf("A que pieza quiere coronar?\n1:Reina(q)\n2:Torre(t)\n3:Alfil(a)\n4:Caballo(c)\n");
+
+
+                    printf("Seleccione\n");
+                scanf("%c", &piezaC);
+                switch(piezaC)
+                {
+                    case 'q':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 't':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 'a':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 'c':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+
+                    default:
+                        {
+                            system("cls");
+                            tableroShow(tablero,turno);
+                            *num2=1;
+                            *num3=1;
+                        }
+
+
+
+
+
+
+
+
+
+
+                }
+              }
 
           }
            if(columnaFinal != columnaInicial)//comer piezas
               {
-                    if(columnaInicial == 1 && columnaFinal == 2&&(filaFinal - filaInicial == -1))
-                    {
-                        printf("c\n");
-                        if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<91&&tablero[filaFinal-1][columnaFinal-1]>64)
-                        {
 
-                            *num2 = 1;
-                            *num3 = 0;
 
-                        }else
-                        {
-                            printf("Movimiento no valido\n");
-                            *num2 = 1;
-                            *num3 = 1;
-
-                        }
-
-                    }
-                    if(columnaInicial == 8&&columnaFinal == 7&&(filaFinal - filaInicial == -1))
-                    {
-
-                         if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<91&&tablero[filaFinal-1][columnaFinal-1]>64)
-                        {
-                            *num2 = 1;
-                            *num3 = 0;
-
-                        }else
-                        {
-                            printf("Movimiento no valido\n");
-                            *num2 = 1;
-                            *num3 = 1;
-
-                        }
-                    }
-
-                    if(columnaInicial>1&&columnaInicial<8)
+                    if(columnaInicial>=1&&columnaInicial<=8)
                     {
                         if(filaFinal -filaInicial == -1)
                         {
-                            if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<91&&tablero[filaFinal-1][columnaFinal-1]>64)
+                            if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<91&&tablero[filaFinal-1][columnaFinal-1]>64&&filaFinal!=1)
                             {
 
                                 *num2 = 1;
                                 *num3 = 0;
 
 
-                            }else
+                            }
+                             if(tablero[filaFinal-1][columnaFinal-1]!=' '&&tablero[filaFinal-1][columnaFinal-1]<91&&tablero[filaFinal-1][columnaFinal-1]>64&&filaFinal==1)
                             {
-                            printf("Movimiento no valido\n");
-                            *num2 = 1;
-                            *num3 = 1;
+
+                                int auxNum=0;
+                printf("A que pieza quiere coronar?\n1:Reina(q)\n2:Torre(t)\n3:Alfil(a)\n4:Caballo(c)\n");
+
+
+                    printf("Seleccione\n");
+                scanf("%c", &piezaC);
+                switch(piezaC)
+                {
+                    case 'q':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 't':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 'a':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+                    case 'c':
+                    tablero[filaFinal-1][columnaFinal-1]=piezaC;
+                    *num2=1;
+                    *num3=2;
+                    auxNum=1;
+                    break;
+
+                    default:
+                        {
+                            system("cls");
+                            tableroShow(tablero,turno);
+                            *num2=1;
+                            *num3=1;
+                        }
+
+
+
+
+
+
+
+
+
+
+                }
+
 
                             }
+
 
                         }
 
@@ -2106,6 +2206,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
            }
     if(piezaI == 3)//movimiento de caballo jugador 1
            {
+
                 if(filaInicial>filaFinal)//movimiento hacia arriba
                 {
                     if(filaInicial-filaFinal==1&&fabs(columnaFinal-columnaInicial)==2)//caso 1
@@ -2144,13 +2245,10 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
                     if(filaInicial-filaFinal==2&&fabs(columnaFinal-columnaInicial)==1)//caso 2
                     {
+
                         if(columnaInicial>columnaFinal)//se mueve a la izquierda
                         {
                            if(tablero[filaInicial-3][columnaInicial-2]==' ')
@@ -2170,6 +2268,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                         }
                         if(columnaInicial<columnaFinal)//se mueve a la derecha
                         {
+
                             if(tablero[filaInicial-3][columnaInicial]==' ')
                            {
                                *num2 = 1;
@@ -2185,16 +2284,8 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
-                }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
-                    }
+                }
                 if(filaInicial<filaFinal)//movimiento hacia abajo
                 {
                     if(filaInicial-filaFinal==-1&&fabs(columnaFinal-columnaInicial)==2)//caso 1
@@ -2233,10 +2324,6 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
                     if(filaInicial-filaFinal==-2&&fabs(columnaFinal-columnaInicial)==1)//caso 2
                     {
@@ -2274,16 +2361,8 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                            *num3 = 1;
                            }
                         }
-                    }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
                     }
-                }else
-                    {
-                        *num2 = 1;
-                        *num3 = 1;
-                    }
+                }
 
             if(*num3 == 1)
             {
@@ -2819,6 +2898,13 @@ void Nuevapartida()
             cambioTurno(&turno);
             tableroShow(tablero,turno);
         }
+        if(num3 == 2)//caso especial de coronar
+        {
+            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] =' ';
+            system("cls");
+            cambioTurno(&turno);
+            tableroShow(tablero,turno);
+        }
 
 
 
@@ -3135,11 +3221,20 @@ void cargarPartida()
 
         }while(num2 != 1);
 
+        if(num3==2)
+        {
+            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] =' ';
+            system("cls");
+
+            cambioTurno(&turno);
+            tableroShow(tablero,turno);
+        }
         if(num3 == 0)
         {
             tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
+
             cambioTurno(&turno);
             tableroShow(tablero,turno);
         }
@@ -3162,7 +3257,7 @@ void movimientoAI(int tablero[8][8])//hay un limite de 150000 posibles calculos 
         filaInicial = rand() % 8;
         columnaInicial = rand() % 8;
         comb+=1;
-        if(comb>15000)
+        if(comb>150000)
         {
 
             numAux1 = 1;
@@ -3176,10 +3271,18 @@ void movimientoAI(int tablero[8][8])//hay un limite de 150000 posibles calculos 
                if(tablero[filaInicial-1][columnaInicial]==' ')
                {
 
-
-                    tablero[filaInicial-1][columnaInicial] = 'p';
+                    if(filaInicial-1==0)//coronarAI basico siempre cambia a una reina
+                    {
+                    tablero[filaInicial-1][columnaInicial] = 'q';
                     tablero[filaInicial][columnaInicial]=' ';
                     numAux1 = 1;
+                    }else
+                    {
+                        tablero[filaInicial-1][columnaInicial] = 'p';
+                    tablero[filaInicial][columnaInicial]=' ';
+                    numAux1 = 1;
+                    }
+
                }else
                {
 
@@ -4027,6 +4130,14 @@ void NuevaPartidaAI()
             tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
+            movimientoAI(tablero);
+            tableroShow(tablero,turno);
+        }
+        if(num3 == 2)
+        {
+            tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] =' ';
+            system("cls");
+
             movimientoAI(tablero);
             tableroShow(tablero,turno);
         }
