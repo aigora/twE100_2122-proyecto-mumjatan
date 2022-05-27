@@ -62,6 +62,7 @@ void tableroShow(int tablero[][8],int turno)
         if (piezasBlancas==0) // gana jugador 0
         {
             animacion_ganador0();
+
         } else
         {
             animacion_ganador1(); //gana jugador 1
@@ -616,7 +617,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 {
                 for(i=(filaInicial);i<(filaFinal-1);i++)
                 {
-                    printf("%c_\n",tablero[i][columnaFinal-1]);
+
                     if(tablero[i][columnaFinal-1]==' ')
                     {
                         if(vNum == 0)
@@ -638,7 +639,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 {
                      for(i=(filaInicial-2);i>(filaFinal-1);i--)
                 {
-                    printf("%c_\n",tablero[i][columnaFinal-1]);
+
                     if(tablero[i][columnaFinal-1]==' ')
                     {
                         if(vNum == 0)
@@ -691,7 +692,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                      for(i=(columnaInicial);i<(columnaFinal-1);i++)
                 {
 
-                    printf("%c_\n",tablero[filaFinal-1][i]);
+
 
                     if(tablero[filaFinal-1][i]==' ')
                     {
@@ -714,7 +715,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                      for(i=(columnaFinal);i<(columnaInicial-1);i++)
                 {
 
-                    printf("%c_\n",tablero[filaFinal-1][i]);
+
 
                     if(tablero[filaFinal-1][i]==' ')
                     {
@@ -740,7 +741,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 {
                     if(vNum == 0)
                     {
-                        printf("%c\n",tablero[filaFinal-1][columnaFinal-1]);
+
                         vNum = 1;
 
                     }
@@ -1640,7 +1641,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 {
                 for(i=(filaInicial);i<(filaFinal-1);i++)
                 {
-                    printf("%c_\n",tablero[i][columnaFinal-1]);
+
                     if(tablero[i][columnaFinal-1]==' ')
                     {
                         if(vNum == 0)
@@ -1662,7 +1663,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 {
                      for(i=(filaInicial-2);i>(filaFinal-1);i--)
                 {
-                    printf("%c_\n",tablero[i][columnaFinal-1]);
+
                     if(tablero[i][columnaFinal-1]==' ')
                     {
                         if(vNum == 0)
@@ -1715,7 +1716,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                      for(i=(columnaInicial);i<(columnaFinal-1);i++)
                 {
 
-                    printf("%c_\n",tablero[filaFinal-1][i]);
+
 
                     if(tablero[filaFinal-1][i]==' ')
                     {
@@ -1738,7 +1739,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                      for(i=(columnaFinal);i<(columnaInicial-1);i++)
                 {
 
-                    printf("%c_\n",tablero[filaFinal-1][i]);
+
 
                     if(tablero[filaFinal-1][i]==' ')
                     {
@@ -1764,7 +1765,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                 {
                     if(vNum == 0)
                     {
-                        printf("%c\n",tablero[filaFinal-1][columnaFinal-1]);
+
                         vNum = 1;
 
                     }
@@ -3839,6 +3840,7 @@ void movimientoAI(int tablero[8][8])//hay un limite de 150000 posibles calculos 
 
 
 
+
            }
            if(tablero[filaInicial][columnaInicial]=='r')
            {
@@ -4045,7 +4047,138 @@ void movimientoAI(int tablero[8][8])//hay un limite de 150000 posibles calculos 
                 }
                 if(situacion == 1)//movimiento como si fuese alfil
                 {
+                    //codigo reina como alfil
+                    int incr = rand()%3;
+                int vert = rand()%2;
+                int dir,vNum=0,i;
+                if(incr == 0)
+                {
+                    incr = 1;
+                }
+                if(vert == 0)//movimiento hacia arriba
+                {
+                    dir=rand()%2;
+                    if(dir == 0&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-i][columnaInicial+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
 
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial-incr][columnaInicial+incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial+incr]='q';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial-incr][columnaInicial+incr]<91&&tablero[filaInicial-incr][columnaInicial+incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial-incr][columnaInicial+incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial+incr]='q';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                    if(dir==1&&(filaInicial-incr<8)&&(filaInicial-incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial-i][columnaInicial-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial-incr][columnaInicial-incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial-incr]='q';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial-incr][columnaInicial-incr]<91&&tablero[filaInicial-incr][columnaInicial-incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial-incr][columnaInicial-incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial-incr][columnaInicial-incr]='q';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                }
+                if(vert == 1)//movimiento hacia debajo
+                {
+                    dir=rand()%2;
+                    if(dir == 0&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial+incr<8)&&(columnaInicial+incr>=0))//mov hacia deracha
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial+i][columnaInicial+i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial+incr][columnaInicial+incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial+incr]='q';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial+incr][columnaInicial+incr]<91&&tablero[filaInicial+incr][columnaInicial+incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial+incr][columnaInicial+incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial+incr]='q';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                    if(dir==1&&(filaInicial+incr<8)&&(filaInicial+incr>=0)&&(columnaInicial-incr<8)&&(columnaInicial-incr>=0))//mov hacia izquierda
+                    {
+                        for(i=1;i<incr;i++)
+                        {
+                            if(tablero[filaInicial+i][columnaInicial-i]!=' ')
+                            {
+                                vNum = 1;
+                                break;
+                            }
+                        }
+
+                        if(vNum == 0)
+                        {
+                            if(tablero[filaInicial+incr][columnaInicial-incr]==' ')
+                            {
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial-incr]='q';
+                                numAux1 = 1;
+
+                            }else if(tablero[filaInicial+incr][columnaInicial-incr]<91&&tablero[filaInicial+incr][columnaInicial-incr]>64)
+                            {
+                                printf("%c\n",tablero[filaInicial+incr][columnaInicial-incr]);
+                                tablero[filaInicial][columnaInicial]=' ';
+                                tablero[filaInicial+incr][columnaInicial-incr]='q';
+                                numAux1 = 1;
+
+                            }
+                        }
+                    }
+                }
                 }
 
            }

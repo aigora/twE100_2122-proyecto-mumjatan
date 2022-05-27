@@ -1,10 +1,10 @@
 lista de cosas por implementar:
 
--movimiento reina jugador 1
--movimiento reina jugador AI (Hecho)(falta como alfil)
+
+
 
 -Comprobar si el rey está en jaque
--Funcion de coronar
+
 
 lista de bugs por resolver:
 
