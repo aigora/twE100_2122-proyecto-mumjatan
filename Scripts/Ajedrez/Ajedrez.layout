@@ -9,39 +9,19 @@
 	</File>
 	<File name="funciones.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="101332" topLine="57" />
+			<Cursor1 position="141799" topLine="2812" />
 		</Cursor>
 		<Folding>
 			<Collapse line="7" />
-			<Collapse line="73" />
-			<Collapse line="95" />
-			<Collapse line="110" />
-			<Collapse line="190" />
-			<Collapse line="200" />
-			<Collapse line="213" />
-			<Collapse line="225" />
-			<Collapse line="240" />
-			<Collapse line="254" />
-			<Collapse line="390" />
-			<Collapse line="609" />
-			<Collapse line="765" />
-			<Collapse line="964" />
-			<Collapse line="1126" />
-			<Collapse line="2712" />
-			<Collapse line="2835" />
-			<Collapse line="2921" />
-			<Collapse line="2960" />
-			<Collapse line="3001" />
-			<Collapse line="3043" />
-			<Collapse line="3082" />
-			<Collapse line="3121" />
-			<Collapse line="3170" />
-			<Collapse line="4074" />
-			<Collapse line="4156" />
-			<Collapse line="4161" />
-			<Collapse line="4188" />
-			<Collapse line="4215" />
-			<Collapse line="4242" />
+			<Collapse line="74" />
+			<Collapse line="187" />
+			<Collapse line="218" />
+			<Collapse line="224" />
+			<Collapse line="4208" />
+			<Collapse line="4290" />
+			<Collapse line="4295" />
+			<Collapse line="4322" />
+			<Collapse line="4349" />
 		</Folding>
 	</File>
 </CodeBlocks_layout_file>
