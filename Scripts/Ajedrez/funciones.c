@@ -4751,7 +4751,7 @@ void animacion_bienvenida()
         }
         fclose(p_file);
     }
-    delay (2.5);
+    delay (6);
     fclose(p_file);
     system("cls");
 }
@@ -4778,7 +4778,7 @@ void animacion_ganador0()
         }
         fclose(p_file);
     }
-    delay (2);
+    delay (5);
     fclose(p_file);
     system("cls");
 }
@@ -4805,7 +4805,7 @@ void animacion_ganador1()
         }
         fclose(p_file);
     }
-    delay (2);
+    delay (5);
     fclose(p_file);
     system("cls");
 }
@@ -4832,7 +4832,7 @@ void animacion_despedida()
         }
         fclose(p_file);
     }
-    delay (5);
+    delay (6);
     fclose(p_file);
     system("cls");
 }
