@@ -4,9 +4,10 @@
 #include <math.h>
 #include <time.h>
 
-void tableroShow(int tablero[][8],int turno)
+
+void tableroShow(int tablero[][8],int turno,int *filaM)
 {
-    int fila,columna,piezasBlancas=0,piezasNegras=0;
+    int fila,columna,piezasBlancas=0,piezasNegras=0,reyBlanco=0,reyNegro=0;
 
     printf("\nLista de comandos:\n- 9 0 volver al menu principal\n- 10 0 guardar partida\n- 11 0 limpiar pantalla\n \n");
 
@@ -14,7 +15,16 @@ void tableroShow(int tablero[][8],int turno)
     {
         for(columna=0;columna<8;columna++)
         {
+            if(tablero[fila][columna]=='R')
+            {
+                reyBlanco+=1;
 
+            }
+             if(tablero[fila][columna]=='r')
+            {
+                reyNegro+=1;
+
+            }
            if(tablero[fila][columna]<91&&tablero[fila][columna]>64)
            {
                piezasBlancas+=1;
@@ -30,6 +40,7 @@ void tableroShow(int tablero[][8],int turno)
 
     }
     printf("Piezas blancas: %d\nPiezas negras: %d\n\n",piezasBlancas,piezasNegras);
+
     printf("  ");
     for(fila=0;fila<8;fila++)
     {
@@ -56,16 +67,18 @@ void tableroShow(int tablero[][8],int turno)
     }
     printf(".........., %d\n",turno);
 
-      if(piezasBlancas==0||piezasNegras==0)
+      if(reyBlanco==0||reyNegro==0)
     {
 
-        if (piezasBlancas==0) // gana jugador 0
+        if (reyNegro==0) // gana jugador 0
         {
             animacion_ganador0();
+            *filaM=9;
 
-        } else
+        } else if(reyBlanco==0)
         {
             animacion_ganador1(); //gana jugador 1
+            *filaM=9;
         }
     }
 
@@ -87,8 +100,8 @@ void tableroStart(int tablero[][8])
     tablero[7][0]='t';
     tablero[7][1]='c';
     tablero[7][2]='a';
-    tablero[7][3]='r';
-    tablero[7][4]='q';
+    tablero[7][3]='q';
+    tablero[7][4]='r';
     tablero[7][5]='a';
     tablero[7][6]='c';
     tablero[7][7]='t';
@@ -211,7 +224,391 @@ void cambioTurno(int *turno)
     }
 
 }
-void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno)
+void reconocerJaque(int tablero[][8],int turno)
+{
+    int fila,columna,i,j,vNum;
+
+    if(turno==0)
+    {
+        for(i=0;i<8;i++)//encontrar la ficha en el tablero
+        {
+            for(j=0;j<8;j++)
+            {
+                if(tablero[i][j]=='R')
+                {
+                    fila=i;
+                    columna=j;
+                }
+
+            }
+
+        }
+        //primer caso amenazado por peones
+        if(tablero[fila+1][columna+1]=='p'||tablero[fila+1][columna-1]=='p')
+        {
+
+            printf("El rey esta en jaque\n");
+
+        }
+        //segundo caso amenazado por torre o reina
+        //analisis hacia la izquierda
+        for(i=(columna-1);i>=0;i--)
+        {
+            if(tablero[fila][i]!=' '&&tablero[fila][i]!='t'&&tablero[fila][i]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila][i]=='t'||tablero[fila][i]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //analisis hacia la derecha
+         for(i=(columna+1);i<8;i++)
+        {
+            if(tablero[fila][i]!=' '&&tablero[fila][i]!='t'&&tablero[fila][i]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila][i]=='t'||tablero[fila][i]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //analisis hacia abajo
+        for(i=(fila+1);i<8;i++)
+        {
+            if(tablero[i][columna]!=' '&&tablero[i][columna]!='t'&&tablero[i][columna]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[i][columna]=='t'||tablero[i][columna]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //analisis hacia arriba
+         for(i=(fila-1);i>=0;i--)
+        {
+            if(tablero[i][columna]!=' '&&tablero[i][columna]!='t'&&tablero[i][columna]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[i][columna]=='t'||tablero[i][columna]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //caso 3 amenazado por alfiles
+        //hacia abajo a la izquierda
+
+        for(i=(columna-1);i>=0;i--)
+        {
+            if(tablero[fila+i][columna-i]!=' '&&tablero[fila+i][columna-i]!='a'&&tablero[fila+i][columna-i]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila+i][columna-i]=='a'||tablero[fila+i][columna-i]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+         //hacia abajo a la derecha
+
+          for(i=(columna+1);i<8;i++)
+        {
+            if(tablero[fila+i][columna+i]!=' '&&tablero[fila+i][columna+i]!='a'&&tablero[fila+i][columna+i]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila+i][columna+i]=='a'||tablero[fila+i][columna+i]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+
+        //hacia arriba a la izquierda
+
+        for(i=(columna-1);i>=0;i--)
+        {
+            if(tablero[fila-i][columna-i]!=' '&&tablero[fila-i][columna-i]!='a'&&tablero[fila-i][columna-i]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila-i][columna-i]=='a'||tablero[fila-i][columna-i]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+         //hacia arriba a la derecha
+          for(i=(columna+1);i<8;i++)
+        {
+            if(tablero[fila-i][columna+i]!=' '&&tablero[fila-i][columna+i]!='a'&&tablero[fila-i][columna+i]!='q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila-i][columna+i]=='a'||tablero[fila-i][columna+i]=='q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+        //caso para jaque con el caballo
+        if(tablero[fila-2][columna-1]=='c'&&fila-2>=0&&columna-1>=0)//caso 1.1
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila-2][columna+1]=='c'&&fila-2>=0&&columna+1<8)//caso 1.2
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila-1][columna-2]=='c'&&fila-1>=0&&columna-2>=0)//caso 1.3
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila-1][columna+2]=='c'&&fila-1>=0&&columna+2<8)//caso 1.4
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+2][columna-1]=='c'&&fila+2<8&&columna-1>=0)//caso 2.1
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+2][columna+1]=='c'&&fila+2<8&&columna+1<8)//caso 2.2
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+1][columna-2]=='c'&&fila+1<8&&columna-2>=0)//caso 2.3
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+1][columna+2]=='c'&&fila+1<8&&columna+2<8)//caso 2.4
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+
+
+
+
+    }
+    if(turno==1)
+    {
+         for(i=0;i<8;i++)//encontrar la ficha en el tablero
+        {
+            for(j=0;j<8;j++)
+            {
+                if(tablero[i][j]=='r')
+                {
+                    fila=i;
+                    columna=j;
+                }
+
+            }
+
+        }
+        //primer caso amenazado por peones
+        if(tablero[fila-1][columna+1]=='P'||tablero[fila-1][columna-1]=='P')
+        {
+
+            printf("El rey esta en jaque\n");
+
+        }
+        //segundo caso amenazado por torre o reina
+        //analisis hacia la izquierda
+        for(i=(columna-1);i>=0;i--)
+        {
+            if(tablero[fila][i]!=' '&&tablero[fila][i]!='T'&&tablero[fila][i]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila][i]=='T'||tablero[fila][i]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //analisis hacia la derecha
+         for(i=(columna+1);i<8;i++)
+        {
+            if(tablero[fila][i]!=' '&&tablero[fila][i]!='T'&&tablero[fila][i]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila][i]=='T'||tablero[fila][i]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //analisis hacia abajo
+        for(i=(fila+1);i<8;i++)
+        {
+            if(tablero[i][columna]!=' '&&tablero[i][columna]!='T'&&tablero[i][columna]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[i][columna]=='T'||tablero[i][columna]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //analisis hacia arriba
+         for(i=(fila-1);i>=0;i--)
+        {
+            if(tablero[i][columna]!=' '&&tablero[i][columna]!='T'&&tablero[i][columna]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[i][columna]=='T'||tablero[i][columna]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+
+        }
+        //caso 3 amenazado por alfiles
+        //hacia abajo a la izquierda
+
+        for(i=(columna-1);i>=0;i--)
+        {
+            if(tablero[fila+i][columna-i]!=' '&&tablero[fila+i][columna-i]!='A'&&tablero[fila+i][columna-i]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila+i][columna-i]=='A'||tablero[fila+i][columna-i]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+         //hacia abajo a la derecha
+
+          for(i=(columna+1);i<8;i++)
+        {
+            if(tablero[fila+i][columna+i]!=' '&&tablero[fila+i][columna+i]!='A'&&tablero[fila+i][columna+i]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila+i][columna+i]=='A'||tablero[fila+i][columna+i]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+
+        //hacia arriba a la izquierda
+
+        for(i=(columna-1);i>=0;i--)
+        {
+            if(tablero[fila-i][columna-i]!=' '&&tablero[fila-i][columna-i]!='A'&&tablero[fila-i][columna-i]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila-i][columna-i]=='A'||tablero[fila-i][columna-i]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+         //hacia arriba a la derecha
+          for(i=(columna+1);i<8;i++)
+        {
+            if(tablero[fila-i][columna+i]!=' '&&tablero[fila-i][columna+i]!='A'&&tablero[fila-i][columna+i]!='Q')
+            {
+                vNum = 0;
+                break;
+            }else
+            if(tablero[fila-i][columna+i]=='A'||tablero[fila-i][columna+i]=='Q')
+            {
+                printf("El rey esta en jaque\n");
+                break;
+            }
+        }
+        //caso para jaque con el caballo
+        if(tablero[fila-2][columna-1]=='C'&&fila-2>=0&&columna-1>=0)//caso 1.1
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila-2][columna+1]=='C'&&fila-2>=0&&columna+1<8)//caso 1.2
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila-1][columna-2]=='C'&&fila-1>=0&&columna-2>=0)//caso 1.3
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila-1][columna+2]=='C'&&fila-1>=0&&columna+2<8)//caso 1.4
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+2][columna-1]=='C'&&fila+2<8&&columna-1>=0)//caso 2.1
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+2][columna+1]=='C'&&fila+2<8&&columna+1<8)//caso 2.2
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+1][columna-2]=='C'&&fila+1<8&&columna-2>=0)//caso 2.3
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+        if(tablero[fila+1][columna+2]=='C'&&fila+1<8&&columna+2<8)//caso 2.4
+        {
+            printf("El rey esta en jaque\n");
+
+        }
+
+
+    }
+
+}
+void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int filaInicial,int filaFinal,int columnaInicial,int columnaFinal,int turno,int *filaM)
 {
    char piezaC;
    int error=0;
@@ -290,7 +687,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                     default:
                         {
                             system("cls");
-                            tableroShow(tablero,turno);
+                            tableroShow(tablero,turno,&filaM);
                             *num2=1;
                             *num3=1;
                         }
@@ -363,7 +760,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                     default:
                         {
                             system("cls");
-                            tableroShow(tablero,turno);
+                            tableroShow(tablero,turno,filaM);
                             *num2=1;
                             *num3=1;
                         }
@@ -1532,7 +1929,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                     default:
                         {
                             system("cls");
-                            tableroShow(tablero,turno);
+                            tableroShow(tablero,turno,filaM);
                             *num2=1;
                             *num3=1;
                         }
@@ -1605,7 +2002,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
                     default:
                         {
                             system("cls");
-                            tableroShow(tablero,turno);
+                            tableroShow(tablero,turno,filaM);
                             *num2=1;
                             *num3=1;
                         }
@@ -2710,7 +3107,7 @@ void verificarMovimiento(int tablero[8][8],int piezaI,int *num2,int *num3,int fi
    }
 }
 
-void posicion(mCoordenadas *mCoord,int tablero[8][8],int turno,int coordenada,int AI)
+void posicion(mCoordenadas *mCoord,int tablero[8][8],int turno,int coordenada,int AI,int *fila)
 {
     if(coordenada == 1)
     {
@@ -2734,7 +3131,7 @@ void posicion(mCoordenadas *mCoord,int tablero[8][8],int turno,int coordenada,in
 
         system("cls");
 
-        tableroShow(tablero,turno);
+        tableroShow(tablero,turno,fila);
     }
     if(fila1 == 10&&columna1==0)
     {
@@ -2792,7 +3189,7 @@ void posicion(mCoordenadas *mCoord,int tablero[8][8],int turno,int coordenada,in
 
         system("cls");
 
-        tableroShow(tablero,turno);
+        tableroShow(tablero,turno,fila);
     }
     if(fila1 == 10&&columna1==0)
     {
@@ -2841,7 +3238,8 @@ void Nuevapartida()
     int tablero[8][8];
     int fila=0;
     tableroStart(tablero);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(tablero,turno);//muestra el tablero en pantalla
+    tableroShow(tablero,turno,&fila);//muestra el tablero en pantalla
+
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -2854,10 +3252,10 @@ void Nuevapartida()
 
         mCoordenadas coordenadas;
 
-
+        reconocerJaque(tablero,turno);
         do
         {
-            posicion(&coordenadas,tablero,turno,1,0);
+            posicion(&coordenadas,tablero,turno,1,0,&fila);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -2878,8 +3276,8 @@ void Nuevapartida()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,tablero,turno,2,0);
-            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
+                posicion(&coordenadas,tablero,turno,2,0,&fila);
+            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno,&fila);
 
             }else{
             num2 = 1;
@@ -2896,15 +3294,35 @@ void Nuevapartida()
             tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] = ' ';
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
+
             cambioTurno(&turno);
-            tableroShow(tablero,turno);
+            tableroShow(tablero,turno,&fila);
+             if(turno==0)
+            {
+                reconocerJaque(tablero,1);
+            }
+            if(turno==1)
+            {
+                reconocerJaque(tablero,0);
+
+            }
         }
         if(num3 == 2)//caso especial de coronar
         {
             tablero[coordenadas.filaInicial-1][coordenadas.columnaInicial-1] =' ';
             system("cls");
+
             cambioTurno(&turno);
-            tableroShow(tablero,turno);
+            tableroShow(tablero,turno,&fila);
+             if(turno==0)
+            {
+                reconocerJaque(tablero,1);
+            }
+            if(turno==1)
+            {
+                reconocerJaque(tablero,0);
+
+            }
         }
 
 
@@ -3174,7 +3592,7 @@ void cargarPartida()
     int tablero[8][8];
     int fila=0;
     tableroLoad(tablero,&turno);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(tablero,turno);//muestra el tablero en pantalla
+    tableroShow(tablero,turno,&fila);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -3185,10 +3603,10 @@ void cargarPartida()
         int num3 = 0;
         int piezaI;
         mCoordenadas coordenadas;
-
+        reconocerJaque(tablero,turno);
         do
         {
-            posicion(&coordenadas,tablero,turno,1,0);
+            posicion(&coordenadas,tablero,turno,1,0,&fila);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -3209,8 +3627,8 @@ void cargarPartida()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,tablero,turno,2,0);
-            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
+                posicion(&coordenadas,tablero,turno,2,0,&fila);
+            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno,&fila);
 
             }else{
             num2 = 1;
@@ -3228,7 +3646,16 @@ void cargarPartida()
             system("cls");
 
             cambioTurno(&turno);
-            tableroShow(tablero,turno);
+            tableroShow(tablero,turno,&fila);
+             if(turno==0)
+            {
+                reconocerJaque(tablero,1);
+            }
+            if(turno==1)
+            {
+                reconocerJaque(tablero,0);
+
+            }
         }
         if(num3 == 0)
         {
@@ -3237,7 +3664,17 @@ void cargarPartida()
             system("cls");
 
             cambioTurno(&turno);
-            tableroShow(tablero,turno);
+            tableroShow(tablero,turno,&fila);
+            if(turno==0)
+            {
+                reconocerJaque(tablero,1);
+            }
+            if(turno==1)
+            {
+                reconocerJaque(tablero,0);
+
+            }
+
         }
 
 
@@ -4211,7 +4648,7 @@ void NuevaPartidaAI()
     int tablero[8][8];
     int fila=0;
     tableroStart(tablero);//inicializa el tablero con cada pieza en su posicion
-    tableroShow(tablero,turno);//muestra el tablero en pantalla
+    tableroShow(tablero,turno,&fila);//muestra el tablero en pantalla
 
     while(fila != 9)//si el usuario al introducir el sacanf mete un 9 el programa se acaba
     {
@@ -4222,10 +4659,10 @@ void NuevaPartidaAI()
         int num3 = 0;
         int piezaI;
         mCoordenadas coordenadas;
-
+        reconocerJaque(tablero,turno);
         do
         {
-            posicion(&coordenadas,tablero,turno,1,1);
+            posicion(&coordenadas,tablero,turno,1,1,&fila);
             fila = coordenadas.filaInicial;
             if(fila != 9)
             {
@@ -4246,8 +4683,8 @@ void NuevaPartidaAI()
         {
             if(fila != 9)
             {
-                posicion(&coordenadas,tablero,turno,2,1);
-            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno);
+                posicion(&coordenadas,tablero,turno,2,1,&fila);
+            verificarMovimiento(tablero,piezaI,&num2,&num3,coordenadas.filaInicial,coordenadas.filaFinal,coordenadas.columnaInicial,coordenadas.columnaFinal,turno,&fila);
 
             }else{
             num2 = 1;
@@ -4265,7 +4702,7 @@ void NuevaPartidaAI()
             tablero[coordenadas.filaFinal-1][coordenadas.columnaFinal-1]=aux;
             system("cls");
             movimientoAI(tablero);
-            tableroShow(tablero,turno);
+            tableroShow(tablero,turno,&fila);
         }
         if(num3 == 2)
         {
@@ -4273,7 +4710,7 @@ void NuevaPartidaAI()
             system("cls");
 
             movimientoAI(tablero);
-            tableroShow(tablero,turno);
+            tableroShow(tablero,turno,&fila);
         }
 
 
